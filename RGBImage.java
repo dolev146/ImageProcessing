@@ -148,12 +148,12 @@ public class RGBImage implements Frame, Comparable<Frame> {
 					}
 					if ((this.frame[1][x][y] + pixelArray[1]) >= 255) {
 						this.frame[1][x][y] = 255;
-					}else {
+					} else {
 						this.frame[1][x][y] = this.frame[1][x][y] + pixelArray[1];
 					}
 					if ((this.frame[2][x][y] + pixelArray[2]) >= 255) {
 						this.frame[2][x][y] = 255;
-					}else {
+					} else {
 						this.frame[2][x][y] = this.frame[2][x][y] + pixelArray[2];
 					}
 
@@ -166,10 +166,30 @@ public class RGBImage implements Frame, Comparable<Frame> {
 
 	@Override
 	public int compareTo(Frame f) {
-		// if(this.frame.length ==){
 
-		// }
-		return 0;
+		int ArrayOfFrame[][][];
+		
+		if (f instanceof RGBImage) {
+			ArrayOfFrame = ((RGBImage) f).getFrame();
+
+			int areaOfFrame = ArrayOfFrame[0][0].length * ArrayOfFrame[0].length;
+
+			int areaOfThis = this.frame[0].length * this.frame[0][0].length;
+
+			if (areaOfThis == areaOfFrame) {
+				return 0;
+			}
+
+			if (areaOfThis > areaOfFrame) {
+				return 1;
+			}
+			if (areaOfThis < areaOfFrame) {
+				return -1;
+			}
+
+		}
+
+		return 99;
 	};
 
 	public int[][][] getFrame() {
