@@ -121,8 +121,27 @@ public class GrayImage implements Frame, Comparable<Frame> {
 
 	@Override
 	public int compareTo(Frame f) {
+		int ArrayOfFrame[][];
+		if (f instanceof GrayImage) {
+			ArrayOfFrame = ((GrayImage) f).getFrame();
 
-		return 0;
+			int areaOfFrame = ArrayOfFrame[0].length * ArrayOfFrame.length;
+
+			int areaOfThis = this.frame.length * this.frame[0].length;
+
+			if (areaOfThis == areaOfFrame) {
+				return 0;
+			}
+			
+			if (areaOfThis > areaOfFrame) {
+				return 1;
+			}
+			if (areaOfThis < areaOfFrame) {
+				return -1;
+			}
+		}
+
+		return 99;
 	};
 
 	public int[][] getFrame() {
