@@ -31,7 +31,7 @@ public class GrayImage implements Frame, Comparable<Frame> {
 		// https://www.youtube.com/watch?v=C_zFhWdM4ic
 		// https://www.youtube.com/watch?v=ZoaEDbivmOE
 		// https://www.youtube.com/watch?v=9JFjYMvLCX0
-		
+
 		for (int i = 0; i < frame.length; i++) {
 			for (int j = 0; j < frame[0].length; j++) {
 				int avg = avgOfNeighbors(this.frame, i, j, n);
@@ -43,9 +43,9 @@ public class GrayImage implements Frame, Comparable<Frame> {
 	public static int avgOfNeighbors(int[][] pic, int x, int y, int n) {
 		int counter = 0;
 		int sum = 0;
-		int k = (n - 1) / 2;
-		for (int i = x - k; i <= x + k; i++) {
-			for (int j = y - k; j <= y + k; j++) {
+		int numberOfNeighbersToCount = (n - 1) / 2;
+		for (int i = x - numberOfNeighbersToCount; i <= x + numberOfNeighbersToCount; i++) {
+			for (int j = y - numberOfNeighbersToCount; j <= y + numberOfNeighbersToCount; j++) {
 				if (i < 0 || j < 0) {
 					continue;
 				}
@@ -113,6 +113,11 @@ public class GrayImage implements Frame, Comparable<Frame> {
 
 		int ArrayOfFrame[][];
 		int pixelArray[] = new int[3];
+		// video about casting and insance of 
+		// https://www.w3schools.com/java/ref_keyword_instanceof.asp
+		// https://www.w3schools.com/java/java_type_casting.asp
+		// https://www.youtube.com/watch?v=H0LNjF9PSeM
+
 		if (f instanceof GrayImage) {
 			ArrayOfFrame = ((GrayImage) f).getFrame();
 		} else {
@@ -159,6 +164,10 @@ public class GrayImage implements Frame, Comparable<Frame> {
 	};
 
 	public int[][] getFrame() {
+		return this.frame;
+	}
+
+	public int[][] getFrame(Frame f) {
 		return this.frame;
 	}
 

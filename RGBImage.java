@@ -21,18 +21,20 @@ public class RGBImage implements Frame, Comparable<Frame> {
 				rotate[2][y][x] = this.frame[2][this.frame[2].length - x - 1][y];
 			}
 		}
-			
 
-			// for (int i = 0; i < rotate[color].length; i++) {
-			// for (int j = 0; j < rotate[color][0].length; j++) {
-			// rotate[color][i][j] = this.frame[color][j][i];
-			// }
-			// }
+		// for (int i = 0; i < rotate[color].length; i++) {
+		// for (int j = 0; j < rotate[color][0].length; j++) {
+		// rotate[color][i][j] = this.frame[color][j][i];
+		// }
+		// }
 
-			this.frame = rotate;
-		}
+		this.frame = rotate;
+	}
 
 	public void smooth(int n) {
+		// https://www.youtube.com/watch?v=C_zFhWdM4ic
+		// https://www.youtube.com/watch?v=ZoaEDbivmOE
+		// https://www.youtube.com/watch?v=9JFjYMvLCX0
 		for (int externalLoopOfColors = 0; externalLoopOfColors < 3; externalLoopOfColors++) {
 			for (int i = 0; i < frame[externalLoopOfColors].length; i++) {
 				for (int j = 0; j < frame[externalLoopOfColors][0].length; j++) {

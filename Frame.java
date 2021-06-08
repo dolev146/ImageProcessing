@@ -1,7 +1,6 @@
 
 public interface Frame {
 	
-	
 	 void rotate90();
 	
 	 void smooth(int n);
@@ -11,9 +10,5 @@ public interface Frame {
 	 void crop(int x, int y );
 	 
 	 void addFrom(Frame f);
-	 
-	 
-	 
-	 
-
+	  	 
 }

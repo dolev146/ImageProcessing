@@ -98,7 +98,7 @@ public class MyImageIO {
 	public static void main(String[] args) throws IOException {
 		// for windows: C:\\Users\\dolev\\Desktop\\Tichnot\\catE.jpg
 		// for mac : Users/dolev/Desktop/Tichnot/catE.jpg
-
+		// C:\Users\dolev\Desktop\Tichnot\catE.jpg
 		// link to code on github
 		// https://github.com/dolev146/ImageProcessing/blob/main/FrameContainer.java
 

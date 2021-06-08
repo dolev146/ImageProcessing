@@ -95,6 +95,8 @@ public class FrameContainer implements ContainerFunctions {
     @Override
     public void sort(Frame[] f) {
         // bubble sort
+        // https://www.youtube.com/watch?v=xli_FI7CuzA
+
         for (int i = 1; i < f.length; i++) {
             for (int j = 0; j < f.length - 1; j++) {
                 int areaOfFirst = 0;
