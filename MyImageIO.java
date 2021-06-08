@@ -141,6 +141,7 @@ public class MyImageIO {
 		arr[1] = colorcrop;
 		arr[2] = graySmooth;
 		part2.sort(arr);
+		part2.get(1);
 	}
 
 }
