@@ -134,6 +134,13 @@ public class MyImageIO {
 		writeImageToFile(colorAddfrom, "catE.jpg_colorAddFrame");
 		writeImageToFile(grayAddfrom, "catE.jpg_grayAddFrame");
 
+		FrameContainer part2 = new FrameContainer("readFrame.txt", true);
+
+		Frame[] arr = new Frame[3];
+		arr[0] = colorAddfrom;
+		arr[1] = colorcrop;
+		arr[2] = graySmooth;
+		part2.sort(arr);
 	}
 
 }
