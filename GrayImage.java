@@ -14,13 +14,7 @@ public class GrayImage implements Frame, Comparable<Frame> {
 	}
 
 	public GrayImage(GrayImage gI) {
-		// deep copy
 		this.frame = gI.frame;
-		for (int i = 0; i < gI.frame.length; i++) {
-			for (int j = 0; j < gI.frame[i].length; j++) {
-				this.frame[i][j] = gI.frame[i][j];
-			}
-		}
 	}
 
 	public void rotate90() {
@@ -34,6 +28,10 @@ public class GrayImage implements Frame, Comparable<Frame> {
 	};
 
 	public void smooth(int n) {
+		// https://www.youtube.com/watch?v=C_zFhWdM4ic
+		// https://www.youtube.com/watch?v=ZoaEDbivmOE
+		// https://www.youtube.com/watch?v=9JFjYMvLCX0
+		
 		for (int i = 0; i < frame.length; i++) {
 			for (int j = 0; j < frame[0].length; j++) {
 				int avg = avgOfNeighbors(this.frame, i, j, n);
