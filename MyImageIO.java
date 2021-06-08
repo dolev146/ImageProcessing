@@ -148,6 +148,9 @@ public class MyImageIO {
 		arr[2] = graySmooth;
 		part2.sort(arr);
 		part2.get(1);
+		part2.smoothAll(arr, 3);
+
+		
 	}
 
 }

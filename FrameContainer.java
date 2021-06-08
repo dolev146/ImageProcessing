@@ -97,8 +97,8 @@ public class FrameContainer implements ContainerFunctions {
         // bubble sort
         // https://www.youtube.com/watch?v=xli_FI7CuzA
 
-        for (int i = 1; i < f.length; i++) {
-            for (int j = 0; j < f.length - 1; j++) {
+        for (int i = 1; i < f.length && f[i] != null; i++) {
+            for (int j = 0; j < f.length - 1 && f[j] != null; j++) {
                 int areaOfFirst = 0;
                 int areaOfSecond = 0;
                 if (f[j] instanceof GrayImage) {
@@ -142,7 +142,7 @@ public class FrameContainer implements ContainerFunctions {
 
     @Override
     public void rotateAll(Frame[] f) {
-        for (int i = 0; i < f.length; i++) {
+        for (int i = 0; i < f.length && f[i] != null; i++) {
             f[i].rotate90();
         }
     }

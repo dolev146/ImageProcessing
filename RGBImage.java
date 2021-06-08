@@ -35,18 +35,25 @@ public class RGBImage implements Frame, Comparable<Frame> {
 		// https://www.youtube.com/watch?v=C_zFhWdM4ic
 		// https://www.youtube.com/watch?v=ZoaEDbivmOE
 		// https://www.youtube.com/watch?v=9JFjYMvLCX0
-		for (int externalLoopOfColors = 0; externalLoopOfColors < 3; externalLoopOfColors++) {
-			for (int i = 0; i < frame[externalLoopOfColors].length; i++) {
-				for (int j = 0; j < frame[externalLoopOfColors][0].length; j++) {
-					int avg = avrageOfTheNeighbors(this.frame, i, j, externalLoopOfColors, n);
-					this.frame[externalLoopOfColors][i][j] = avg;
-				}
+
+		for (int i = 0; i < frame[0].length; i++) {
+			for (int j = 0; j < frame[0][0].length; j++) {
+
+				int avg1 = avrageOfTheNeighbors(this.frame, i, j, 0, n);
+				int avg2 = avrageOfTheNeighbors(this.frame, i, j, 1, n);
+				int avg3 = avrageOfTheNeighbors(this.frame, i, j, 2, n);
+
+				this.frame[0][i][j] = avg1;
+				this.frame[1][i][j] = avg2;
+				this.frame[2][i][j] = avg3;
 			}
 		}
+
 	};
 
 	public static int avrageOfTheNeighbors(int[][][] MatrixArray, int x, int y, int LoopOfColors, int n) {
 		int sum = 0;
+		int counter = 0;
 		int neighborsCounter = (n - 1) / 2;
 		for (int i = x - neighborsCounter; i <= x + neighborsCounter; i++) {
 			for (int j = y - neighborsCounter; j <= y + neighborsCounter; j++) {
@@ -56,11 +63,12 @@ public class RGBImage implements Frame, Comparable<Frame> {
 				if (i >= MatrixArray[LoopOfColors].length || j >= MatrixArray[LoopOfColors][0].length) {
 					continue;
 				} else {
+					counter++;
 					sum = sum + MatrixArray[LoopOfColors][i][j];
 				}
 			}
 		}
-		int avg = sum / (n * n);
+		int avg = sum / counter;
 		return avg;
 	}
 
