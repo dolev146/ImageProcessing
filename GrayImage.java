@@ -111,12 +111,15 @@ public class GrayImage implements Frame, Comparable<Frame> {
 			for (int x = 0; x < this.frame.length; x++) {
 				for (int y = 0; y < this.frame[0].length; y++) {
 					pixelArray = f.getPixel(x, y);
-					this.frame[x][y] = this.frame[x][y] + pixelArray[0];
+					if ((this.frame[x][y] + pixelArray[0]) > 255 * 255) {
+						this.frame[x][y] = 255 * 255;
+					} else {
+						this.frame[x][y] = this.frame[x][y] + pixelArray[0];
+					}
 				}
 			}
 		}
 		return;
-
 	}
 
 	@Override
@@ -132,7 +135,6 @@ public class GrayImage implements Frame, Comparable<Frame> {
 			if (areaOfThis == areaOfFrame) {
 				return 0;
 			}
-			
 			if (areaOfThis > areaOfFrame) {
 				return 1;
 			}

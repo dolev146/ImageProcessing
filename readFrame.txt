@@ -1,0 +1,11 @@
+catE.jpg
+catE.jpg_color.jpg
+catE.jpg_colorAddFrame.jpg
+catE.jpg_colorcrop.jpg
+catE.jpg_colorRotated.jpg
+catE.jpg_colorSmooth.jpg
+catE.jpg_gray.jpg
+catE.jpg_grayAddFrame.jpg
+catE.jpg_graycrop.jpg
+catE.jpg_grayRotated.jpg
+catE.jpg_graySmooth.jpg
