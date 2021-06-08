@@ -29,9 +29,7 @@ public class FrameContainer implements ContainerFunctions {
             BufferedReader bf = new BufferedReader(fr);
             String str;
             str = bf.readLine();
-
             while (str != null) {
-
                 if (str != null) {
                     Frame f = MyImageIO.readImageFromFile(str, isGray);
                     if (isGray) {

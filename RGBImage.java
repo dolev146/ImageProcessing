@@ -14,18 +14,23 @@ public class RGBImage implements Frame, Comparable<Frame> {
 	public void rotate90() {
 		int[][][] rotate = new int[3][this.frame[0][0].length][this.frame[0].length];
 
-		for (int x = 0; x < 3; x++) {
-			for (int i = 0; i < rotate[x].length; i++) {
-				for (int j = 0; j < rotate[x][0].length; j++) {
-					rotate[x][i][j] = this.frame[x][j][i];
-				}
+		for (int x = 0; x < rotate[0][0].length; x++) {
+			for (int y = 0; y < rotate[0].length; y++) {
+				rotate[0][y][x] = this.frame[0][this.frame[0].length - x - 1][y];
+				rotate[1][y][x] = this.frame[1][this.frame[1].length - x - 1][y];
+				rotate[2][y][x] = this.frame[2][this.frame[2].length - x - 1][y];
 			}
-
 		}
+			
 
-		this.frame = rotate;
+			// for (int i = 0; i < rotate[color].length; i++) {
+			// for (int j = 0; j < rotate[color][0].length; j++) {
+			// rotate[color][i][j] = this.frame[color][j][i];
+			// }
+			// }
 
-	};
+			this.frame = rotate;
+		}
 
 	public void smooth(int n) {
 		for (int externalLoopOfColors = 0; externalLoopOfColors < 3; externalLoopOfColors++) {
@@ -168,7 +173,7 @@ public class RGBImage implements Frame, Comparable<Frame> {
 	public int compareTo(Frame f) {
 
 		int ArrayOfFrame[][][];
-		
+
 		if (f instanceof RGBImage) {
 			ArrayOfFrame = ((RGBImage) f).getFrame();
 
@@ -193,7 +198,7 @@ public class RGBImage implements Frame, Comparable<Frame> {
 	};
 
 	public int[][][] getFrame() {
-		return frame;
+		return this.frame;
 	}
 
 }

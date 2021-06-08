@@ -5,17 +5,29 @@ public class GrayImage implements Frame, Comparable<Frame> {
 
 	public GrayImage(int[][] frame) {
 		this.frame = frame;
+		// deep copy
+		// for (int i = 0; i < frame.length; i++) {
+		// for (int j = 0; j < frame[i].length; j++) {
+		// this.frame[i][j] = frame[i][j];
+		// }
+		// }
 	}
 
 	public GrayImage(GrayImage gI) {
+		// deep copy
 		this.frame = gI.frame;
+		for (int i = 0; i < gI.frame.length; i++) {
+			for (int j = 0; j < gI.frame[i].length; j++) {
+				this.frame[i][j] = gI.frame[i][j];
+			}
+		}
 	}
 
 	public void rotate90() {
 		int[][] rotatedArray = new int[this.frame[0].length][this.frame.length];
-		for (int i = 0; i < rotatedArray.length; i++) {
-			for (int j = 0; j < rotatedArray[0].length; j++) {
-				rotatedArray[i][j] = this.frame[j][i];
+		for (int x = 0; x < rotatedArray[0].length; x++) {
+			for (int y = 0; y < rotatedArray.length; y++) {
+				rotatedArray[y][x] = this.frame[this.frame.length - x - 1][y];
 			}
 		}
 		this.frame = rotatedArray;
@@ -31,6 +43,7 @@ public class GrayImage implements Frame, Comparable<Frame> {
 	};
 
 	public static int avgOfNeighbors(int[][] pic, int x, int y, int n) {
+		int counter = 0;
 		int sum = 0;
 		int k = (n - 1) / 2;
 		for (int i = x - k; i <= x + k; i++) {
@@ -41,11 +54,12 @@ public class GrayImage implements Frame, Comparable<Frame> {
 				if (i >= pic.length || j >= pic[0].length) {
 					continue;
 				} else {
+					counter++;
 					sum = sum + pic[i][j];
 				}
 			}
 		}
-		int avg = sum / (n * n);
+		int avg = sum / counter;
 		return avg;
 	}
 
@@ -147,8 +161,7 @@ public class GrayImage implements Frame, Comparable<Frame> {
 	};
 
 	public int[][] getFrame() {
-
-		return frame;
+		return this.frame;
 	}
 
 }
