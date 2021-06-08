@@ -96,9 +96,12 @@ public class MyImageIO {
 	}
 
 	public static void main(String[] args) throws IOException {
-		// for windows:  C:\\Users\\dolev\\Desktop\\Tichnot\\catE.jpg
+		// for windows: C:\\Users\\dolev\\Desktop\\Tichnot\\catE.jpg
 		// for mac : Users/dolev/Desktop/Tichnot/catE.jpg
-		
+
+		// link to code on github
+		// https://github.com/dolev146/ImageProcessing/blob/main/FrameContainer.java
+
 		Frame color = readImageFromFile("catE.jpg", false);
 		Frame gray = readImageFromFile("catE.jpg", true);
 		writeImageToFile(color, "catE.jpg_color");
