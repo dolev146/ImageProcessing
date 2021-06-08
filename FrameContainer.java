@@ -53,9 +53,7 @@ public class FrameContainer implements ContainerFunctions {
 
     @Override
     public Frame get(int i) {
-        // TODO Auto-generated method stub
-
-        return null;
+        return this.FrameArray[i];
     }
 
     @Override
@@ -78,7 +76,6 @@ public class FrameContainer implements ContainerFunctions {
         for (int i = 0; i < this.size(); i++) {
             temp[i] = this.FrameArray[i];
         }
-
         FrameArray = temp;
     }
 
@@ -99,30 +96,30 @@ public class FrameContainer implements ContainerFunctions {
 
     @Override
     public void sort(Frame[] f) {
-        for (int i = 0; i < f.length; i++) {
-            for (int j = 0; j < f.length; j++) {
+        // bubble sort
+        for (int i = 1; i < f.length; i++) {
+            for (int j = 0; j < f.length - 1; j++) {
                 int areaOfFirst = 0;
                 int areaOfSecond = 0;
-                if (f[i] instanceof GrayImage) {
-                    areaOfFirst = areaOfGrayImage((GrayImage) f[i]);
+                if (f[j] instanceof GrayImage) {
+                    areaOfFirst = areaOfGrayImage((GrayImage) f[j]);
                 } else if (f[i] instanceof RGBImage) {
-                    areaOfFirst = areaOfRGBImage((RGBImage) f[i]);
-                } else{
+                    areaOfFirst = areaOfRGBImage((RGBImage) f[j]);
+                } else {
                     return;
                 }
-                if (f[j] instanceof GrayImage) {
-                    areaOfSecond = areaOfGrayImage((GrayImage) f[j]);
-                } else if (f[j] instanceof RGBImage) {
-                    areaOfSecond = areaOfRGBImage((RGBImage) f[j]);
-                } else{
+                if (f[j + 1] instanceof GrayImage) {
+                    areaOfSecond = areaOfGrayImage((GrayImage) f[j + 1]);
+                } else if (f[j + 1] instanceof RGBImage) {
+                    areaOfSecond = areaOfRGBImage((RGBImage) f[j + 1]);
+                } else {
                     return;
                 }
                 if (areaOfFirst > areaOfSecond) {
-                        swap(f[i], f[j]); 
+                    swap(f[j], f[j + 1]);
                 }
             }
         }
-
     }
 
     public int areaOfGrayImage(GrayImage gi) {
@@ -145,14 +142,15 @@ public class FrameContainer implements ContainerFunctions {
 
     @Override
     public void rotateAll(Frame[] f) {
-        // TODO Auto-generated method stub
-
+        for (int i = 0; i < f.length; i++) {
+            f[i].rotate90();
+        }
     }
 
     @Override
     public void smoothAll(Frame[] f, int n) {
-        // TODO Auto-generated method stub
-
+        for (int i = 0; i < f.length; i++) {
+            f[i].smooth(n);
+        }
     }
-
 }
