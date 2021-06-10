@@ -36,6 +36,14 @@ public class RGBImage implements Frame, Comparable<Frame> {
 		// https://www.youtube.com/watch?v=ZoaEDbivmOE
 		// https://www.youtube.com/watch?v=9JFjYMvLCX0
 
+		if (n < 2) {
+			return;
+		}
+
+		if (n % 2 == 0) {
+			n = n - 1;
+		}
+
 		for (int i = 0; i < frame[0].length; i++) {
 			for (int j = 0; j < frame[0][0].length; j++) {
 
@@ -181,6 +189,9 @@ public class RGBImage implements Frame, Comparable<Frame> {
 
 	@Override
 	public int compareTo(Frame f) {
+		if (f == null) {
+			return -1;
+		}
 
 		int ArrayOfFrame[][][];
 
@@ -204,7 +215,7 @@ public class RGBImage implements Frame, Comparable<Frame> {
 
 		}
 
-		return 99;
+		return -1;
 	};
 
 	public int[][][] getFrame() {

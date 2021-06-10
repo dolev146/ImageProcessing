@@ -108,8 +108,12 @@ public class MyImageIO {
 		writeImageToFile(gray, "catE.jpg_gray");
 		Frame colorR = readImageFromFile("catE.jpg", false);
 		Frame grayR = readImageFromFile("catE.jpg", true);
+
+
 		colorR.rotate90();
 		grayR.rotate90();
+
+
 		writeImageToFile(colorR, "catE.jpg_colorRotated");
 		writeImageToFile(grayR, "catE.jpg_grayRotated");
 		Frame colorSmooth = readImageFromFile("catE.jpg", false);
@@ -140,7 +144,7 @@ public class MyImageIO {
 		writeImageToFile(colorAddfrom, "catE.jpg_colorAddFrame");
 		writeImageToFile(grayAddfrom, "catE.jpg_grayAddFrame");
 
-		FrameContainer part2 = new FrameContainer("readFrame.txt", true);
+		FrameContainer part2 = new FrameContainer("readFrame.txt");
 
 		Frame[] arr = new Frame[3];
 		arr[0] = colorAddfrom;
@@ -149,6 +153,36 @@ public class MyImageIO {
 		part2.sort(arr);
 		part2.get(1);
 		part2.smoothAll(arr, 3);
+
+
+		  // sort !!!
+		  int[][] arr9 = { { 1, 1, 1, 1 }, { 1, 1, 1, 1 }, { 1, 1, 1, 1 }, { 1, 1, 1, 1 }, };
+		  Frame gray9 = new GrayImage(arr9);
+  
+		  int[][] arr2 = { { 1, 1, 1, 1 }, { 1, 1, 1, 1 }, { 1, 1, 1, 1 } };
+		  Frame gray2 = new GrayImage(arr2);
+  
+		  int[][] arr3 = { { 1, 1, 1, 1 }, { 1, 1, 1, 1 }, };
+		  Frame gray3 = new GrayImage(arr3);
+  
+		  int[][] arr5 = { { 1 }, { 1 }, { 1 }, { 1 }, };
+		  Frame gray5 = new GrayImage(arr5);
+  
+		  int[][] arr4 = { { 1 }, { 1 } };
+		  Frame gray4 = new GrayImage(arr4);
+  
+		  Frame[] ArrayOfFrame = { gray2, gray9, gray5, gray3, gray4 };
+  
+		  FrameContainer frameContainer = new FrameContainer();
+		  for (int i = 0; i < ArrayOfFrame.length; i++) {
+			  frameContainer.add(ArrayOfFrame[i]);
+		  }
+		  frameContainer.sort(ArrayOfFrame);
+  
+		  int[][][] ArrayOfmatrix = new int[6][][];
+		  for (int i = 0; i < ArrayOfFrame.length; i++) {
+			  ArrayOfmatrix[i] = ((GrayImage) ArrayOfFrame[i]).getFrame();
+		  }
 
 		
 	}

@@ -49,7 +49,7 @@ public class GrayImageTest {
 
         int[][] ArrayOfFrame = ((GrayImage) gray).getFrame();
 
-        int[][] arr2 = { { 2, 3, 6 }, { 8, 10, 12 }, { 14, 16, 18 } };
+        int[][] arr2 = { { 2, 4, 6 }, { 8, 10, 12 }, { 14, 16, 18 } };
         Assertions.assertArrayEquals(arr2, ArrayOfFrame);
     }
 
@@ -66,10 +66,5 @@ public class GrayImageTest {
 
         Assertions.assertArrayEquals(arr2, a);
     }
-
-  
-
-
-
 
 }
