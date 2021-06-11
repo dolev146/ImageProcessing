@@ -46,12 +46,16 @@ We need to implement the following functions:
 
 
 ![alt text](catE.jpg_colorAddFrame.jpg "catty1")
+
 ![alt text](catE.jpg_colorcrop.jpg "catty")
+
 ![alt text](catE.jpg_colorRotated.jpg "catty")
 ![alt text](catE.jpg_colorSmooth.jpg "catty")
 ![alt text](catE.jpg_gray.jpg "catty")
-![alt text](catE.jpg_gray.jpg "catty")
+![alt text](catE.jpg_grayAddFrame.jpg "catty")
+
 ![alt text](catE.jpg_graycrop.jpg "catty")
+
 ![alt text](catE.jpg_grayRotated.jpg "catty")
 ![alt text](catE.jpg_graySmooth.jpg "catty")
 

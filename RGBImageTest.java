@@ -81,9 +81,9 @@ public class RGBImageTest {
         int[][][] ArrayOfFrame = ((RGBImage) color).getFrame();
 
         int[][][] arr2 = { 
-            {{ 3, 3, 4 }, { 5, 5, 5 }, { 6, 6, 6 }},
-            {{ 3, 3, 4 }, { 5, 5, 5 }, { 6, 6, 6 }},
-            {{ 3, 3, 4 }, { 5, 5, 5 }, { 6, 6, 6 }},
+            {{ 3, 3, 4 }, { 4, 5, 5 }, { 6, 6, 7 }},
+            {{ 3, 3, 4 }, { 4, 5, 5 }, { 6, 6, 7 }},
+            {{ 3, 3, 4 }, { 4, 5, 5 }, { 6, 6, 7 }},
          };
 
 
@@ -149,5 +149,7 @@ public class RGBImageTest {
 
         Assertions.assertArrayEquals(arr2, a);
     }
+
+    
 
 }

@@ -1,5 +1,5 @@
 import java.io.*;
-
+import java.util.Arrays;
 
 public class FrameContainer implements ContainerFunctions {
     int actualSize;
@@ -93,123 +93,129 @@ public class FrameContainer implements ContainerFunctions {
     @Override
     public void sort(Frame[] f) {
 
+        Arrays.sort(this.FrameArray);
 
-        int size1;
-        int size2;
+        // for (int i = 1; i < actualSize - 1; i++) {
+        //     for(int j = 0 ; j < actualSize - 1; j++){
 
-        int arr1[][][];
-        int arr2[][];
-
-        for (int i = 0; i<actualSize - 1; i++) {
-
-            if (f[i] instanceof GrayImage) {
-                arr2 = ((GrayImage)f[i]).getFrame();
-
-                size1 = arr2.length * arr2[0].length;
-            }
-
-            else {
-
-                arr1 = ((RGBImage)f[i]).getFrame();
-
-                size1 = arr1[0].length * arr1[0][0].length;
-            }
-
-            for (int j = i+1; j<actualSize; j++) {
-
-                if (f[j] instanceof GrayImage) {
-                    arr2 = ((GrayImage)f[j]).getFrame();
-
-                    size2 = arr2.length * arr2[0].length;
-                }
-
-                else {
-
-                    arr1 = ((RGBImage)f[j]).getFrame();
-
-                    size2 = arr1[0].length * arr1[0][0].length;
-                }
-
-                if (size1 < size2) {
-
-                    Frame hold;
-
-                    if (f[i] instanceof GrayImage) {
-                        hold = new GrayImage((GrayImage)f[i]);
-                    }
-
-                    else {
-                        hold = new RGBImage((RGBImage)f[i]);
-                    }
-
-                    f[i] = f[j];
-                    f[j] = hold;
-                }
-
-            }
-        }
+        //         int answer = 0;
+        //         if (f[i] instanceof GrayImage) {
+        //             answer = ((GrayImage) f[i]).compareTo(f[j]);
+        //         }else{
+        //             answer = ((RGBImage)f[i]).compareTo(f[j]);
+        //         }
+        //         if(answer == 1){
+        //             Frame hold;
+        //             if(f[i] instanceof GrayImage){
+        //                 hold = new GrayImage((GrayImage)f[i]);
+        //             }
+        //             else{
+        //                 hold = new RGBImage((RGBImage)f[i]);
+        //             }
 
 
+        //         }
 
+
+        //     }
+            
+
+        // }
+
+        // int size1;
+        // int size2;
+        // int arr1[][][];
+        // int arr2[][];
+        // for (int i = 0; i<actualSize ; i++) {
+        // if (f[i] instanceof GrayImage) {
+        // arr2 = ((GrayImage)f[i]).getFrame();
+        // size1 = arr2.length * arr2[0].length;
+        // }
+        // else {
+        // arr1 = ((RGBImage)f[i]).getFrame();
+        // size1 = arr1[0].length * arr1[0][0].length;
+        // }
+        // for (int j = i+1; j<actualSize; j++) {
+        // if (f[j] instanceof GrayImage) {
+        // arr2 = ((GrayImage)f[j]).getFrame();
+        // size2 = arr2.length * arr2[0].length;
+        // }
+        // else {
+        // arr1 = ((RGBImage)f[j]).getFrame();
+        // size2 = arr1[0].length * arr1[0][0].length;
+        // }
+        // if (size1 > size2) {
+        // Frame hold;
+        // if (f[i] instanceof GrayImage) {
+        // hold = new GrayImage((GrayImage)f[i]);
+        // }
+        // else {
+        // hold = new RGBImage((RGBImage)f[i]);
+        // }
+        // f[i] = f[j];
+        // f[j] = hold;
+        // }
+
+        // }
+        // }
 
         // Arrays.sort(f);
-
 
         // int TheLengthOfFirst = 0;
         // ///
         // int TheLengthOfSecound = 0;
-        //     //
+        // //
         // int firstArray[][][];
-        //         //
+        // //
         // int secondArray[][];
 
         // for (int i = 0; i < actualSize - 1; i++) {
 
-        //     if (f[i] instanceof GrayImage) {
-        //         secondArray = ((GrayImage) f[i]).getFrame();
+        // if (f[i] instanceof GrayImage) {
+        // secondArray = ((GrayImage) f[i]).getFrame();
 
-        //         TheLengthOfFirst = secondArray.length * secondArray[0].length;
-        //     }
+        // TheLengthOfFirst = secondArray.length * secondArray[0].length;
+        // }
 
-        //     else if (f[i] instanceof RGBImage)  {
+        // else if (f[i] instanceof RGBImage) {
 
-        //         firstArray = ((RGBImage) f[i]).getFrame();
+        // firstArray = ((RGBImage) f[i]).getFrame();
 
-        //         TheLengthOfFirst = firstArray[0].length * firstArray[0][0].length;
-        //     }
+        // TheLengthOfFirst = firstArray[0].length * firstArray[0][0].length;
+        // }
 
-        //     for (int j = i + 1; j < actualSize; j++) {
+        // for (int j = i + 1; j < actualSize; j++) {
 
-        //         if (f[j] instanceof GrayImage) {
-        //             secondArray = ((GrayImage) f[j]).getFrame();
+        // if (f[j] instanceof GrayImage) {
+        // secondArray = ((GrayImage) f[j]).getFrame();
 
-        //             TheLengthOfSecound = secondArray.length * secondArray[0].length;
-        //         }
+        // TheLengthOfSecound = secondArray.length * secondArray[0].length;
+        // }
 
-        //         else if(f[j] instanceof RGBImage ) {
+        // else if(f[j] instanceof RGBImage ) {
 
-        //             firstArray = ((RGBImage) f[j]).getFrame();
+        // firstArray = ((RGBImage) f[j]).getFrame();
 
-        //             TheLengthOfSecound = firstArray[0].length * firstArray[0][0].length;
-        //         }
+        // TheLengthOfSecound = firstArray[0].length * firstArray[0][0].length;
+        // }
 
-        //         if (TheLengthOfFirst < TheLengthOfSecound) {
+        // if (TheLengthOfFirst < TheLengthOfSecound) {
 
-        //             Frame hold;
+        // Frame hold;
 
-        //             if (f[i] instanceof GrayImage) {
-        //                 hold = new GrayImage((GrayImage) f[i]);
-        //             }
+        // if (f[i] instanceof GrayImage) {
+        // hold = new GrayImage((GrayImage) f[i]);
+        // }
 
-        //             else {
-        //                 hold = new RGBImage((RGBImage) f[i]);
-        //             }
+        // else {
+        // hold = new RGBImage((RGBImage) f[i]);
+        // }
 
-        //             f[i] = f[j];
-        //             f[j] = hold;
-        //         }
+        // f[i] = f[j];
+        // f[j] = hold;
+        // }
 
-        //     }
+        // }
         // }
 
     }

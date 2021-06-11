@@ -4,11 +4,28 @@ public class RGBImage implements Frame, Comparable<Frame> {
 	int frame[][][];
 
 	public RGBImage(int frame[][][]) {
-		this.frame = frame;
+		this.frame = new int[3][frame[0].length][frame[0][0].length];
+		// deep copy
+		for(int i  = 0 ; i < frame[0].length; i++){
+			for (int j = 0; j < frame[0][0].length; j++) {
+				this.frame[0][i][j] = frame[0][i][j];
+				this.frame[1][i][j] = frame[1][i][j];
+				this.frame[2][i][j] = frame[2][i][j];
+			}
+		}
 	}
 
 	public RGBImage(RGBImage rgbImage) {
-		this.frame = rgbImage.frame;
+		this.frame = new int[3][frame[0].length][frame[0][0].length];
+		// deep copy
+		for(int i  = 0 ; i < frame[0].length; i++){
+			for (int j = 0; j < frame[0][0].length; j++) {
+				this.frame[0][i][j] = rgbImage.frame[0][i][j];
+				this.frame[1][i][j] = rgbImage.frame[1][i][j];
+				this.frame[2][i][j] = rgbImage.frame[2][i][j];
+			}
+		}
+
 	}
 
 	public void rotate90() {
@@ -44,12 +61,24 @@ public class RGBImage implements Frame, Comparable<Frame> {
 			n = n - 1;
 		}
 
+
+			// deep copy
+			int[][][] arr = new int[3][this.frame[0].length][this.frame[0][0].length];
+			for (int i = 0; i < this.frame[0].length; i++) {
+				for (int j = 0; j < this.frame[0][0].length; j++) {
+					arr[0][i][j] = this.frame[0][i][j];
+					arr[1][i][j] = this.frame[1][i][j];
+					arr[2][i][j] = this.frame[2][i][j];
+				}
+			}
+
+
 		for (int i = 0; i < frame[0].length; i++) {
 			for (int j = 0; j < frame[0][0].length; j++) {
 
-				int avg1 = avrageOfTheNeighbors(this.frame, i, j, 0, n);
-				int avg2 = avrageOfTheNeighbors(this.frame, i, j, 1, n);
-				int avg3 = avrageOfTheNeighbors(this.frame, i, j, 2, n);
+				int avg1 = avrageOfTheNeighbors(arr, i, j, 0, n);
+				int avg2 = avrageOfTheNeighbors(arr, i, j, 1, n);
+				int avg3 = avrageOfTheNeighbors(arr, i, j, 2, n);
 
 				this.frame[0][i][j] = avg1;
 				this.frame[1][i][j] = avg2;
@@ -193,12 +222,13 @@ public class RGBImage implements Frame, Comparable<Frame> {
 			return -1;
 		}
 
-		int ArrayOfFrame[][][];
+		int ArrayOfFrameRGB[][][];
+		int ArrayOfFrameGray[][];
 
 		if (f instanceof RGBImage) {
-			ArrayOfFrame = ((RGBImage) f).getFrame();
+			ArrayOfFrameRGB = ((RGBImage) f).getFrame();
 
-			int areaOfFrame = ArrayOfFrame[0][0].length * ArrayOfFrame[0].length;
+			int areaOfFrame = ArrayOfFrameRGB[0][0].length * ArrayOfFrameRGB[0].length;
 
 			int areaOfThis = this.frame[0].length * this.frame[0][0].length;
 
@@ -213,6 +243,24 @@ public class RGBImage implements Frame, Comparable<Frame> {
 				return -1;
 			}
 
+		} else if (f instanceof GrayImage)  {
+
+			ArrayOfFrameGray = ((GrayImage) f).getFrame();
+
+			int areaOfFrame = ArrayOfFrameGray[0].length * ArrayOfFrameGray.length;
+
+			int areaOfThis = this.frame[0].length * this.frame[0][0].length;
+
+			if (areaOfThis == areaOfFrame) {
+				return 0;
+			}
+
+			if (areaOfThis > areaOfFrame) {
+				return 1;
+			}
+			if (areaOfThis < areaOfFrame) {
+				return -1;
+			}
 		}
 
 		return -1;

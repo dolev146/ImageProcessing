@@ -18,12 +18,21 @@ public class GrayImageTest {
 
     @Test
     void test2() {
-        int[][] arr = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+        int[][] arr = {
+             { 1, 2, 3 },
+              { 4, 5, 6 },
+               { 7, 8, 9 }
+             };
         Frame gray = new GrayImage(arr);
         gray.smooth(3);
         int[][] ArrayOfFrame = ((GrayImage) gray).getFrame();
 
-        int[][] arr2 = { { 3, 3, 4 }, { 5, 5, 5 }, { 6, 6, 6 }, };
+        int[][] arr2 = {
+             { 3, 3, 4 },
+              { 4, 5, 5 },
+               { 6, 6, 7 },
+            
+            };
         Assertions.assertArrayEquals(arr2, ArrayOfFrame);
     }
 

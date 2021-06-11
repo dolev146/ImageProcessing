@@ -4,17 +4,26 @@ public class GrayImage implements Frame, Comparable<Frame> {
 	private int[][] frame;
 
 	public GrayImage(int[][] frame) {
-		this.frame = frame;
+		// this.frame = gI.frame.clone();
 		// deep copy
-		// for (int i = 0; i < frame.length; i++) {
-		// for (int j = 0; j < frame[i].length; j++) {
-		// this.frame[i][j] = frame[i][j];
-		// }
-		// }
+
+		this.frame = new int[frame.length][frame[0].length];
+		// deep copy
+		for (int i = 0; i < frame.length; i++) {
+			for (int j = 0; j < frame[i].length; j++) {
+				this.frame[i][j] = frame[i][j];
+			}
+		}
 	}
 
 	public GrayImage(GrayImage gI) {
-		this.frame = gI.frame;
+		this.frame = new int[gI.frame.length][];
+		// deep copy
+		for (int i = 0; i < frame.length; i++) {
+			for (int j = 0; j < frame[i].length; j++) {
+				this.frame[i][j] = gI.frame[i][j];
+			}
+		}
 	}
 
 	public void rotate90() {
@@ -29,6 +38,7 @@ public class GrayImage implements Frame, Comparable<Frame> {
 	};
 
 	public void smooth(int n) {
+
 		// https://www.youtube.com/watch?v=C_zFhWdM4ic
 		// https://www.youtube.com/watch?v=ZoaEDbivmOE
 		// https://www.youtube.com/watch?v=9JFjYMvLCX0
@@ -41,9 +51,17 @@ public class GrayImage implements Frame, Comparable<Frame> {
 			n = n - 1;
 		}
 
+		// deep copy
+		int[][] arr = new int[this.frame.length][this.frame[0].length];
+		for (int i = 0; i < this.frame.length; i++) {
+			for (int j = 0; j < this.frame[0].length; j++) {
+				arr[i][j] = this.frame[i][j];
+			}
+		}
+
 		for (int i = 0; i < frame.length; i++) {
 			for (int j = 0; j < frame[0].length; j++) {
-				int avg = avgOfNeighbors(this.frame, i, j, n);
+				int avg = avgOfNeighbors(arr, i, j, n);
 				this.frame[i][j] = avg;
 			}
 		}
@@ -151,12 +169,14 @@ public class GrayImage implements Frame, Comparable<Frame> {
 
 	@Override
 	public int compareTo(Frame f) {
-		
+
 		if (f == null) {
 			return -1;
 		}
 
 		int ArrayOfFrame[][];
+		int ArrayOfFrameRGB[][][];
+
 		if (f instanceof GrayImage) {
 			ArrayOfFrame = ((GrayImage) f).getFrame();
 
@@ -173,6 +193,24 @@ public class GrayImage implements Frame, Comparable<Frame> {
 			if (areaOfThis < areaOfFrame) {
 				return -1;
 			}
+		} else if (f instanceof RGBImage) {
+			ArrayOfFrameRGB = ((RGBImage) f).getFrame();
+
+			int areaOfFrame = ArrayOfFrameRGB[0][0].length * ArrayOfFrameRGB[0].length;
+
+			int areaOfThis = this.frame.length * this.frame[0].length;
+
+			if (areaOfThis == areaOfFrame) {
+				return 0;
+			}
+
+			if (areaOfThis > areaOfFrame) {
+				return 1;
+			}
+			if (areaOfThis < areaOfFrame) {
+				return -1;
+			}
+
 		}
 
 		return -1;
@@ -185,8 +223,9 @@ public class GrayImage implements Frame, Comparable<Frame> {
 	public int[][] getFrame(Frame f) {
 		return this.frame;
 	}
+
 	public void setFrame(int[][] f) {
-		
+
 	}
 
 }
