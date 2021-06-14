@@ -17,7 +17,7 @@ public class GrayImage implements Frame, Comparable<Frame> {
 	}
 
 	public GrayImage(GrayImage gI) {
-		this.frame = new int[gI.frame.length][];
+		this.frame = new int[gI.frame.length][gI.frame[0].length];
 		// deep copy
 		for (int i = 0; i < frame.length; i++) {
 			for (int j = 0; j < frame[i].length; j++) {
@@ -43,7 +43,7 @@ public class GrayImage implements Frame, Comparable<Frame> {
 		// https://www.youtube.com/watch?v=ZoaEDbivmOE
 		// https://www.youtube.com/watch?v=9JFjYMvLCX0
 
-		if (n < 2) {
+		if (n <= 2) {
 			return;
 		}
 
@@ -97,11 +97,28 @@ public class GrayImage implements Frame, Comparable<Frame> {
 		return pixelArray;
 	};
 
+	public boolean isInside(int test[][], int x, int y) {
+
+		if (x < 0 || y < 0 || x >= test.length || y >= test[0].length){
+			return false;
+		}
+
+		return true;
+	}
+
 	public void crop(int x, int y) {
-		int[][] croppedMatrix = new int[x][y];
-		for (int i = 0; i < x; i++) {
-			for (int j = 0; j < y; j++) {
-				croppedMatrix[i][j] = this.frame[i][j];
+
+		if (x >= this.frame.length || y >= this.frame[0].length) {
+			return;
+		}
+
+
+		int[][] croppedMatrix = new int[x+1][y+1];
+		for (int i = 0; i <= x; i++) {
+			for (int j = 0; j <= y; j++) {
+				if(isInside(this.frame, i,j)) {
+					croppedMatrix[i][j] = this.frame[i][j];
+				}
 			}
 		}
 		this.frame = croppedMatrix;
@@ -169,51 +186,43 @@ public class GrayImage implements Frame, Comparable<Frame> {
 
 	@Override
 	public int compareTo(Frame f) {
-
 		if (f == null) {
 			return -1;
 		}
 
-		int ArrayOfFrame[][];
-		int ArrayOfFrameRGB[][][];
-
-		if (f instanceof GrayImage) {
-			ArrayOfFrame = ((GrayImage) f).getFrame();
-
-			int areaOfFrame = ArrayOfFrame[0].length * ArrayOfFrame.length;
-
-			int areaOfThis = this.frame.length * this.frame[0].length;
-
-			if (areaOfThis == areaOfFrame) {
-				return 0;
-			}
-			if (areaOfThis > areaOfFrame) {
+		if (f instanceof RGBImage) {
+			int arr[][][];
+			
+			arr = ((RGBImage)f).getFrame();
+			
+			int my_size = this.frame.length * this.frame[0].length;
+			int other = arr[0].length * arr[0][0].length;
+			
+			if (my_size > other)
 				return 1;
-			}
-			if (areaOfThis < areaOfFrame) {
+			
+			if (my_size < other)
 				return -1;
-			}
-		} else if (f instanceof RGBImage) {
-			ArrayOfFrameRGB = ((RGBImage) f).getFrame();
-
-			int areaOfFrame = ArrayOfFrameRGB[0][0].length * ArrayOfFrameRGB[0].length;
-
-			int areaOfThis = this.frame.length * this.frame[0].length;
-
-			if (areaOfThis == areaOfFrame) {
-				return 0;
-			}
-
-			if (areaOfThis > areaOfFrame) {
-				return 1;
-			}
-			if (areaOfThis < areaOfFrame) {
-				return -1;
-			}
-
+			
+			return 0;
 		}
-
-		return -1;
+		
+		else {
+			int arr[][];
+			
+			arr = ((GrayImage)f).getFrame();
+			
+			int my_size = this.frame.length * this.frame[0].length;
+			int other = arr.length * arr[0].length;
+			
+			if (my_size > other)
+				return 1;
+			
+			if (my_size < other)
+				return -1;
+			
+			return 0;
+		}
 	};
 
 	public int[][] getFrame() {

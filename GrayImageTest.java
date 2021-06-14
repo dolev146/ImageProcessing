@@ -38,9 +38,13 @@ public class GrayImageTest {
 
     @Test
     void test3() {
-        int[][] arr = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+        int[][] arr = { 
+            { 1, 2, 3 },
+             { 4, 5, 6 },
+              { 7, 8, 9 }
+             };
         Frame gray = new GrayImage(arr);
-        gray.crop(2, 2);
+        gray.crop(1, 1);
 
         int[][] ArrayOfFrame = ((GrayImage) gray).getFrame();
 

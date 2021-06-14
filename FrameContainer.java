@@ -2,10 +2,10 @@ import java.io.*;
 import java.util.Arrays;
 
 public class FrameContainer implements ContainerFunctions {
-    int actualSize;
+     private int actualSize;
     final int INITIAL_Size = 5;
     final int RESIZE_Size = 5;
-    Frame[] FrameArray;
+    private Frame[] FrameArray;
 
     public FrameContainer() {
         this.FrameArray = new Frame[this.INITIAL_Size];
@@ -13,16 +13,16 @@ public class FrameContainer implements ContainerFunctions {
     }
 
     // copy constructor but not needed for this question
-    public FrameContainer(FrameContainer FC) {
-        this.FrameArray = new Frame[FC.FrameArray.length];
-        this.actualSize = FC.size();
-        // deep copy
-        for (int i = 0; i < this.actualSize; i++) {
-            this.FrameArray[i] = FC.FrameArray[i];
-        }
-    }
+    // public FrameContainer(FrameContainer FC) {
+    //     this.FrameArray = new Frame[FC.FrameArray.length];
+    //     this.actualSize = FC.size();
+    //     // deep copy not deep copy need to fix this
+    //     for (int i = 0; i < this.actualSize; i++) {
+    //         this.FrameArray[i] = FC.FrameArray[i];
+    //     }
+    // }
 
-    public FrameContainer(String FileName) {
+    public FrameContainer(String FileName, boolean gray) {
         this.FrameArray = new Frame[INITIAL_Size];
         this.actualSize = 0;
         try {
@@ -32,7 +32,7 @@ public class FrameContainer implements ContainerFunctions {
             str = bf.readLine();
             while (str != null) {
                 if (str != null) {
-                    Frame f = MyImageIO.readImageFromFile(str, false);
+                    Frame f = MyImageIO.readImageFromFile(str, gray);
 
                     Frame newFrame = ((RGBImage) f);
                     add(newFrame);
@@ -59,6 +59,7 @@ public class FrameContainer implements ContainerFunctions {
 
     @Override
     public void add(Frame f) {
+        if(f == null)return;
         if (actualSize == FrameArray.length) {
             resize();
         }
@@ -90,10 +91,92 @@ public class FrameContainer implements ContainerFunctions {
 
     }
 
-    @Override
-    public void sort(Frame[] f) {
+    // @Override
+    // public void sort(Frame[] f) {
+        public void sort() {
 
-        Arrays.sort(this.FrameArray);
+            for (int i = 1; i<this.actualSize ; i++) {
+                for (int j = 0; j<this.actualSize-1; j++) {    
+                    int ans = 0;
+                    if (this.FrameArray[j] instanceof GrayImage)     
+                         ans = ((GrayImage)this.FrameArray[j]).compareTo(this.FrameArray[j+1]);    
+                    else ans = ((RGBImage)this.FrameArray[j]).compareTo(this.FrameArray[j+1]);
+    
+                    if (ans == 1) {
+                        Frame Temp;
+                        if (this.FrameArray[j] instanceof GrayImage) {
+                            Temp = new GrayImage((GrayImage)this.FrameArray[j]);            
+                        }
+                        else Temp = new RGBImage((RGBImage)this.FrameArray[j]);        
+    
+                        this.FrameArray[j] = this.FrameArray[j+1];
+                        this.FrameArray[j+1] = Temp;
+                    }
+                }    
+            }
+        }
+            
+// Arrays.sort(this.FrameArray);
+          
+    
+            // int size1;
+            // int size2;
+    
+            // int arr1[][][];
+            // int arr2[][];
+    
+            // for (int i = 0; i<actualSize - 1; i++) {
+    
+            //     if (f[i] instanceof GrayImage) {
+            //         arr2 = ((GrayImage)f[i]).getFrame();
+    
+            //         size1 = arr2.length * arr2[0].length;
+            //     }
+    
+            //     else {
+    
+            //         arr1 = ((RGBImage)f[i]).getFrame();
+    
+            //         size1 = arr1[0].length * arr1[0][0].length;
+            //     }
+    
+            //     for (int j = i+1; j<actualSize; j++) {	
+    
+            //         if (f[j] instanceof GrayImage) {
+            //             arr2 = ((GrayImage)f[j]).getFrame();
+    
+            //             size2 = arr2.length * arr2[0].length;
+            //         }
+    
+            //         else {
+    
+            //             arr1 = ((RGBImage)f[j]).getFrame();
+    
+            //             size2 = arr1[0].length * arr1[0][0].length;
+            //         }
+    
+            //         if (size1 < size2) {
+    
+            //             Frame hold;
+    
+            //             if (f[i] instanceof GrayImage) {
+            //                 hold = new GrayImage((GrayImage)f[i]);	
+            //             }
+    
+            //             else {
+            //                 hold = new RGBImage((RGBImage)f[i]);		
+            //             }
+    
+            //             f[i] = f[j];
+            //             f[j] = hold;
+            //         }
+    
+            //     }	
+            // }
+    
+        // }
+
+        // Arrays.sort(this.FrameArray);
 
         // for (int i = 1; i < actualSize - 1; i++) {
         //     for(int j = 0 ; j < actualSize - 1; j++){
@@ -218,7 +301,7 @@ public class FrameContainer implements ContainerFunctions {
         // }
         // }
 
-    }
+    
 
     // @Override
     // public void sort() {
@@ -304,16 +387,16 @@ public class FrameContainer implements ContainerFunctions {
     // }
 
     @Override
-    public void rotateAll(Frame[] f) {
-        for (int i = 0; i < f.length && f[i] != null; i++) {
-            f[i].rotate90();
+    public void rotateAll() {
+        for (int i = 0; i < this.size() ; i++) {
+            this.FrameArray[i].rotate90();
         }
     }
 
     @Override
-    public void smoothAll(Frame[] f, int n) {
-        for (int i = 0; i < f.length; i++) {
-            f[i].smooth(n);
+    public void smoothAll(int n) {
+        for (int i = 0; i <this.size(); i++) {
+            this.FrameArray[i].smooth(n);
         }
     }
 }

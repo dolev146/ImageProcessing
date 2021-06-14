@@ -99,7 +99,7 @@ public class RGBImageTest {
             {{ 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 }},};
 
         Frame color = new RGBImage(arr);
-        color.crop(2, 2);
+        color.crop(1, 1);
 
         int[][][] ArrayOfFrame = ((RGBImage) color).getFrame();
 

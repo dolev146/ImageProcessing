@@ -100,59 +100,59 @@ public class MyImageIO {
 		// for mac : Users/dolev/Desktop/Tichnot/catE.jpg
 		// C:\Users\dolev\Desktop\Tichnot\catE.jpg
 		// link to code on github
-		// https://github.com/dolev146/ImageProcessing/blob/main/FrameContainer.java
+		// https://github.com/dolev146/ImageProcessing/
 
-		Frame color = readImageFromFile("catE.jpg", false);
-		Frame gray = readImageFromFile("catE.jpg", true);
-		writeImageToFile(color, "catE.jpg_color");
-		writeImageToFile(gray, "catE.jpg_gray");
-		Frame colorR = readImageFromFile("catE.jpg", false);
-		Frame grayR = readImageFromFile("catE.jpg", true);
-
-
-		colorR.rotate90();
-		grayR.rotate90();
+		// Frame color = readImageFromFile("catE.jpg", false);
+		// Frame gray = readImageFromFile("catE.jpg", true);
+		// writeImageToFile(color, "catE.jpg_color");
+		// writeImageToFile(gray, "catE.jpg_gray");
+		// Frame colorR = readImageFromFile("catE.jpg", false);
+		// Frame grayR = readImageFromFile("catE.jpg", true);
 
 
-		writeImageToFile(colorR, "catE.jpg_colorRotated");
-		writeImageToFile(grayR, "catE.jpg_grayRotated");
-		Frame colorSmooth = readImageFromFile("catE.jpg", false);
-		Frame graySmooth = readImageFromFile("catE.jpg", true);
-		colorSmooth.smooth(15);
-		graySmooth.smooth(15);
-		writeImageToFile(colorSmooth, "catE.jpg_colorSmooth");
-		writeImageToFile(graySmooth, "catE.jpg_graySmooth");
+		// colorR.rotate90();
+		// grayR.rotate90();
 
-		Frame colorcrop = readImageFromFile("catE.jpg", false);
-		Frame graycrop = readImageFromFile("catE.jpg", true);
 
-		colorcrop.crop(100, 100);
-		graycrop.crop(100, 100);
+		// writeImageToFile(colorR, "catE.jpg_colorRotated");
+		// writeImageToFile(grayR, "catE.jpg_grayRotated");
+		// Frame colorSmooth = readImageFromFile("catE.jpg", false);
+		// Frame graySmooth = readImageFromFile("catE.jpg", true);
+		// colorSmooth.smooth(15);
+		// graySmooth.smooth(15);
+		// writeImageToFile(colorSmooth, "catE.jpg_colorSmooth");
+		// writeImageToFile(graySmooth, "catE.jpg_graySmooth");
 
-		colorcrop.getPixel(10, 10);
-		graycrop.getPixel(10, 10);
+		// Frame colorcrop = readImageFromFile("catE.jpg", false);
+		// Frame graycrop = readImageFromFile("catE.jpg", true);
 
-		writeImageToFile(colorcrop, "catE.jpg_colorcrop");
-		writeImageToFile(graycrop, "catE.jpg_graycrop");
+		// colorcrop.crop(100, 100);
+		// graycrop.crop(100, 100);
 
-		Frame colorAddfrom = readImageFromFile("catE.jpg", false);
-		Frame grayAddfrom = readImageFromFile("catE.jpg", true);
+		// colorcrop.getPixel(10, 10);
+		// graycrop.getPixel(10, 10);
 
-		colorAddfrom.addFrom(colorAddfrom);
-		grayAddfrom.addFrom(grayAddfrom);
+		// writeImageToFile(colorcrop, "catE.jpg_colorcrop");
+		// writeImageToFile(graycrop, "catE.jpg_graycrop");
 
-		writeImageToFile(colorAddfrom, "catE.jpg_colorAddFrame");
-		writeImageToFile(grayAddfrom, "catE.jpg_grayAddFrame");
+		// Frame colorAddfrom = readImageFromFile("catE.jpg", false);
+		// Frame grayAddfrom = readImageFromFile("catE.jpg", true);
 
-		FrameContainer part2 = new FrameContainer("readFrame.txt");
+		// colorAddfrom.addFrom(colorAddfrom);
+		// grayAddfrom.addFrom(grayAddfrom);
 
-		Frame[] arr = new Frame[3];
-		arr[0] = colorAddfrom;
-		arr[1] = colorcrop;
-		arr[2] = graySmooth;
-		part2.sort(arr);
-		part2.get(1);
-		part2.smoothAll(arr, 3);
+		// writeImageToFile(colorAddfrom, "catE.jpg_colorAddFrame");
+		// writeImageToFile(grayAddfrom, "catE.jpg_grayAddFrame");
+
+		// FrameContainer part2 = new FrameContainer("readFrame.txt",true);
+
+		// Frame[] arr = new Frame[3];
+		// arr[0] = colorAddfrom;
+		// arr[1] = colorcrop;
+		// arr[2] = graySmooth;
+		// part2.sort();
+		// part2.get(1);
+		// part2.smoothAll( 3);
 
 
 		  // sort !!!
@@ -177,12 +177,14 @@ public class MyImageIO {
 		  for (int i = 0; i < ArrayOfFrame.length; i++) {
 			  frameContainer.add(ArrayOfFrame[i]);
 		  }
-		  frameContainer.sort(ArrayOfFrame);
+		  frameContainer.sort();
   
 		  int[][][] ArrayOfmatrix = new int[6][][];
 		  for (int i = 0; i < ArrayOfFrame.length; i++) {
 			  ArrayOfmatrix[i] = ((GrayImage) ArrayOfFrame[i]).getFrame();
 		  }
+
+		 
 
 		
 	}
