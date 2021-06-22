@@ -96,96 +96,11 @@ public class MyImageIO {
 	}
 
 	public static void main(String[] args) throws IOException {
-		// for windows: C:\\Users\\dolev\\Desktop\\Tichnot\\catE.jpg
-		// for mac : Users/dolev/Desktop/Tichnot/catE.jpg
-		// C:\Users\dolev\Desktop\Tichnot\catE.jpg
-		// link to code on github
-		// https://github.com/dolev146/ImageProcessing/
 
-		// Frame color = readImageFromFile("catE.jpg", false);
-		// Frame gray = readImageFromFile("catE.jpg", true);
-		// writeImageToFile(color, "catE.jpg_color");
-		// writeImageToFile(gray, "catE.jpg_gray");
-		// Frame colorR = readImageFromFile("catE.jpg", false);
-		// Frame grayR = readImageFromFile("catE.jpg", true);
-
-
-		// colorR.rotate90();
-		// grayR.rotate90();
-
-
-		// writeImageToFile(colorR, "catE.jpg_colorRotated");
-		// writeImageToFile(grayR, "catE.jpg_grayRotated");
-		// Frame colorSmooth = readImageFromFile("catE.jpg", false);
-		// Frame graySmooth = readImageFromFile("catE.jpg", true);
-		// colorSmooth.smooth(15);
-		// graySmooth.smooth(15);
-		// writeImageToFile(colorSmooth, "catE.jpg_colorSmooth");
-		// writeImageToFile(graySmooth, "catE.jpg_graySmooth");
-
-		// Frame colorcrop = readImageFromFile("catE.jpg", false);
-		// Frame graycrop = readImageFromFile("catE.jpg", true);
-
-		// colorcrop.crop(100, 100);
-		// graycrop.crop(100, 100);
-
-		// colorcrop.getPixel(10, 10);
-		// graycrop.getPixel(10, 10);
-
-		// writeImageToFile(colorcrop, "catE.jpg_colorcrop");
-		// writeImageToFile(graycrop, "catE.jpg_graycrop");
-
-		// Frame colorAddfrom = readImageFromFile("catE.jpg", false);
-		// Frame grayAddfrom = readImageFromFile("catE.jpg", true);
-
-		// colorAddfrom.addFrom(colorAddfrom);
-		// grayAddfrom.addFrom(grayAddfrom);
-
-		// writeImageToFile(colorAddfrom, "catE.jpg_colorAddFrame");
-		// writeImageToFile(grayAddfrom, "catE.jpg_grayAddFrame");
-
-		// FrameContainer part2 = new FrameContainer("readFrame.txt",true);
-
-		// Frame[] arr = new Frame[3];
-		// arr[0] = colorAddfrom;
-		// arr[1] = colorcrop;
-		// arr[2] = graySmooth;
-		// part2.sort();
-		// part2.get(1);
-		// part2.smoothAll( 3);
-
-
-		  // sort !!!
-		  int[][] arr9 = { { 1, 1, 1, 1 }, { 1, 1, 1, 1 }, { 1, 1, 1, 1 }, { 1, 1, 1, 1 }, };
-		  Frame gray9 = new GrayImage(arr9);
-  
-		  int[][] arr2 = { { 1, 1, 1, 1 }, { 1, 1, 1, 1 }, { 1, 1, 1, 1 } };
-		  Frame gray2 = new GrayImage(arr2);
-  
-		  int[][] arr3 = { { 1, 1, 1, 1 }, { 1, 1, 1, 1 }, };
-		  Frame gray3 = new GrayImage(arr3);
-  
-		  int[][] arr5 = { { 1 }, { 1 }, { 1 }, { 1 }, };
-		  Frame gray5 = new GrayImage(arr5);
-  
-		  int[][] arr4 = { { 1 }, { 1 } };
-		  Frame gray4 = new GrayImage(arr4);
-  
-		  Frame[] ArrayOfFrame = { gray2, gray9, gray5, gray3, gray4 };
-  
-		  FrameContainer frameContainer = new FrameContainer();
-		  for (int i = 0; i < ArrayOfFrame.length; i++) {
-			  frameContainer.add(ArrayOfFrame[i]);
-		  }
-		  frameContainer.sort();
-  
-		  int[][][] ArrayOfmatrix = new int[6][][];
-		  for (int i = 0; i < ArrayOfFrame.length; i++) {
-			  ArrayOfmatrix[i] = ((GrayImage) ArrayOfFrame[i]).getFrame();
-		  }
-
-		 
-
+		Frame color = readImageFromFile("catE.jpg", false);
+		Frame gray = readImageFromFile("catE.jpg", true);
+		writeImageToFile(color, "catE.jpg_color");
+		writeImageToFile(gray, "catE.jpg_gray");
 		
 	}
 

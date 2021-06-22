@@ -4,61 +4,69 @@ import org.junit.jupiter.api.Test;
 
 public class RGBImageTest {
     @Test
-    void test1() {
-        int[][][] arr = { 
-            {{ 4, 5, 9, 1, 3, 6 },
-             { 4, 5, 9, 1, 3, 6 },
-              { 4, 5, 9, 1, 3, 6 },
-               { 4, 5, 9, 1, 3, 6 }},
+    void FirstTest() {
+        int[][][] FirstArray = { 
+            {{ 7, 5, 11, 1, 3, 6 },
+            { 7, 5, 11, 1, 3, 6 },
+             { 7, 5, 11, 1, 3, 6 },
+              { 7, 5, 11, 1, 3, 6 }},
 
-               {{ 4, 5, 9, 1, 3, 6 },
-             { 4, 5, 9, 1, 3, 6 },
-              { 4, 5, 9, 1, 3, 6 },
-               { 4, 5, 9, 1, 3, 6 }},
+               {{ 7, 5, 11, 1, 3, 6 },
+               { 7, 5, 11, 1, 3, 6 },
+                { 7, 5, 11, 1, 3, 6 },
+                 { 7, 5, 11, 1, 3, 6 }},
 
 
-               {{ 4, 5, 9, 1, 3, 6 },
-             { 4, 5, 9, 1, 3, 6 },
-              { 4, 5, 9, 1, 3, 6 },
-               { 4, 5, 9, 1, 3, 6 }}
+               {{ 7, 5, 11, 1, 3, 6 },
+               { 7, 5, 11, 1, 3, 6 },
+                { 7, 5, 11, 1, 3, 6 },
+                 { 7, 5, 11, 1, 3, 6 }}
             
             
             
             };
-        Frame color = new RGBImage(arr);
-        color.rotate90();
-        int[][][] ArrayOfFrame = ((RGBImage) color).getFrame();
+        Frame color = new RGBImage(FirstArray);
 
-        int[][][] arr2 = { 
-            {{ 4, 4, 4, 4 },
-             { 5, 5, 5, 5 },
-              { 9, 9, 9, 9 },
-               { 1, 1, 1, 1 },
-                { 3, 3, 3, 3 },
-                { 6, 6, 6, 6 }
+
+
+
+
+
+
+        
+        color.rotate90();
+        int[][][] Frame = ((RGBImage) color).getFrame();
+
+        int[][][] secondArray = { 
+            { { 7, 7, 7, 7 },
+            { 5, 5, 5, 5 },
+             { 11, 11, 11, 11 },
+              { 1, 1, 1, 1 },
+               { 3, 3, 3, 3 },
+               { 6, 6, 6, 6 }
             },
-            {{ 4, 4, 4, 4 },
-             { 5, 5, 5, 5 },
-              { 9, 9, 9, 9 },
-               { 1, 1, 1, 1 },
-                { 3, 3, 3, 3 },
-                { 6, 6, 6, 6 }
+            { { 7, 7, 7, 7 },
+            { 5, 5, 5, 5 },
+             { 11, 11, 11, 11 },
+              { 1, 1, 1, 1 },
+               { 3, 3, 3, 3 },
+               { 6, 6, 6, 6 }
             },
-            {{ 4, 4, 4, 4 },
-             { 5, 5, 5, 5 },
-              { 9, 9, 9, 9 },
-               { 1, 1, 1, 1 },
-                { 3, 3, 3, 3 },
-                { 6, 6, 6, 6 }
+            { { 7, 7, 7, 7 },
+            { 5, 5, 5, 5 },
+             { 11, 11, 11, 11 },
+              { 1, 1, 1, 1 },
+               { 3, 3, 3, 3 },
+               { 6, 6, 6, 6 }
             }
             
             };
 
-        Assertions.assertArrayEquals(arr2, ArrayOfFrame);
+        Assertions.assertArrayEquals(secondArray, Frame);
     }
 
     @Test
-    void test2() {
+    void secondTest() {
         
         int[][][] arr = { 
 
@@ -91,7 +99,7 @@ public class RGBImageTest {
     }
 
     @Test
-    void test3() {
+    void thirdTest() {
 
         int[][][] arr = { 
             {{ 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 }},
@@ -113,7 +121,7 @@ public class RGBImageTest {
     }
 
     @Test
-    void test4() {
+    void ForthTest() {
         int[][][] arr = {  {{ 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 }},
         {{ 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 }},
         {{ 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 }}, };
@@ -132,7 +140,7 @@ public class RGBImageTest {
     }
 
     @Test
-    void test5() {
+    void fithTest() {
 
         int[][][] arr = { 
         {    { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 }},

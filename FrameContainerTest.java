@@ -3,7 +3,7 @@ import org.junit.jupiter.api.Test;
 
 public class FrameContainerTest {
     @Test
-    void test1() {
+    void FirstTest() {
 
         
 //          // sort !!!
@@ -124,7 +124,7 @@ public class FrameContainerTest {
     }
 
     @Test
-    void test2() {
+    void secondTest() {
         int[][] arr = { { 1, 2, 3, 4 }, { 1, 2, 3, 4 }, { 1, 2, 3, 4 }, { 1, 2, 3, 4 }, };
         Frame gray = new GrayImage(arr);
 
@@ -196,7 +196,7 @@ public class FrameContainerTest {
     }
 
     @Test
-    void test3() {
+    void thirdTest() {
         // 
         int[][] arr = { { 1, 2, 3, 4 }, { 1, 2, 3, 4 }, { 1, 2, 3, 4 }, { 1, 2, 3, 4 }, };
         Frame gray = new GrayImage(arr);
@@ -242,7 +242,7 @@ public class FrameContainerTest {
     }
 
     @Test
-    void test4() {
+    void ForthTest() {
         //TODO add 
 
         int[][] arr = { 

@@ -4,20 +4,31 @@ import org.junit.jupiter.api.Test;
 
 public class GrayImageTest {
     @Test
-    void test1() {
-        int[][] arr = { { 4, 5, 9, 1, 3, 6 }, { 4, 5, 9, 1, 3, 6 }, { 4, 5, 9, 1, 3, 6 }, { 4, 5, 9, 1, 3, 6 } };
-        Frame gray = new GrayImage(arr);
+    void FirstTest() {
+        int[][] FirstArray = { 
+            { 7, 5, 11, 1, 3, 6 },
+             { 7, 5, 11, 1, 3, 6 },
+              { 7, 5, 11, 1, 3, 6 },
+               { 7, 5, 11, 1, 3, 6 }
+             };
+        Frame gray = new GrayImage(FirstArray);
         gray.rotate90();
-        int[][] ArrayOfFrame = ((GrayImage) gray).getFrame();
+        int[][] Frame = ((GrayImage) gray).getFrame();
 
-        int[][] arr2 = { { 4, 4, 4, 4 }, { 5, 5, 5, 5 }, { 9, 9, 9, 9 }, { 1, 1, 1, 1 }, { 3, 3, 3, 3 },
-                { 6, 6, 6, 6 } };
+        int[][] SecondArray = { 
+            { 7, 7, 7, 7 },
+             { 5, 5, 5, 5 },
+              { 11, 11, 11, 11 },
+               { 1, 1, 1, 1 },
+                { 3, 3, 3, 3 },
+                { 6, 6, 6, 6 }
+             };
 
-        Assertions.assertArrayEquals(arr2, ArrayOfFrame);
+        Assertions.assertArrayEquals(SecondArray, Frame);
     }
 
     @Test
-    void test2() {
+    void secondTest() {
         int[][] arr = {
              { 1, 2, 3 },
               { 4, 5, 6 },
@@ -37,7 +48,7 @@ public class GrayImageTest {
     }
 
     @Test
-    void test3() {
+    void thirdTest() {
         int[][] arr = { 
             { 1, 2, 3 },
              { 4, 5, 6 },
@@ -54,7 +65,7 @@ public class GrayImageTest {
     }
 
     @Test
-    void test4() {
+    void ForthTest() {
         int[][] arr = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
         Frame gray = new GrayImage(arr);
 
@@ -67,7 +78,7 @@ public class GrayImageTest {
     }
 
     @Test
-    void test5() {
+    void fithTest() {
 
         int[][] arr = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
 

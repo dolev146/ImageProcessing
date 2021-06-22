@@ -3,22 +3,22 @@ public class GrayImage implements Frame, Comparable<Frame> {
 
 	private int[][] frame;
 
-	public GrayImage(int[][] frame) {
-		// this.frame = gI.frame.clone();
-		// deep copy
+	
 
-		this.frame = new int[frame.length][frame[0].length];
-		// deep copy
-		for (int i = 0; i < frame.length; i++) {
-			for (int j = 0; j < frame[i].length; j++) {
-				this.frame[i][j] = frame[i][j];
+	
+	public void rotate90() {
+		int[][] r = new int[this.frame[0].length][this.frame.length];
+		for (int x = 0; x < r[0].length; x++) {
+			for (int y = 0; y < r.length; y++) {
+				r[y][x] = this.frame[this.frame.length - x - 1][y];
 			}
 		}
-	}
+
+		this.frame = r;
+	};
 
 	public GrayImage(GrayImage gI) {
 		this.frame = new int[gI.frame.length][gI.frame[0].length];
-		// deep copy
 		for (int i = 0; i < frame.length; i++) {
 			for (int j = 0; j < frame[i].length; j++) {
 				this.frame[i][j] = gI.frame[i][j];
@@ -26,23 +26,8 @@ public class GrayImage implements Frame, Comparable<Frame> {
 		}
 	}
 
-	public void rotate90() {
-		int[][] rotatedArray = new int[this.frame[0].length][this.frame.length];
-		for (int x = 0; x < rotatedArray[0].length; x++) {
-			for (int y = 0; y < rotatedArray.length; y++) {
-				rotatedArray[y][x] = this.frame[this.frame.length - x - 1][y];
-			}
-		}
-
-		this.frame = rotatedArray;
-	};
 
 	public void smooth(int n) {
-
-		// https://www.youtube.com/watch?v=C_zFhWdM4ic
-		// https://www.youtube.com/watch?v=ZoaEDbivmOE
-		// https://www.youtube.com/watch?v=9JFjYMvLCX0
-
 		if (n <= 2) {
 			return;
 		}
@@ -51,7 +36,7 @@ public class GrayImage implements Frame, Comparable<Frame> {
 			n = n - 1;
 		}
 
-		// deep copy
+
 		int[][] arr = new int[this.frame.length][this.frame[0].length];
 		for (int i = 0; i < this.frame.length; i++) {
 			for (int j = 0; j < this.frame[0].length; j++) {
@@ -61,27 +46,49 @@ public class GrayImage implements Frame, Comparable<Frame> {
 
 		for (int i = 0; i < frame.length; i++) {
 			for (int j = 0; j < frame[0].length; j++) {
-				int avg = avgOfNeighbors(arr, i, j, n);
+				int avg = neighborsAvrage(arr, i, j, n);
 				this.frame[i][j] = avg;
 			}
 		}
 	};
 
-	public static int avgOfNeighbors(int[][] pic, int x, int y, int n) {
+	public int[] getPixel(int x, int y) {
+		int p = 0;
+		p = this.frame[x][y];
+
+		// now we will return the pixel in an array
+
+		int[] parr = new int[1];
+		parr[0] = p;
+		return parr;
+	};
+
+	public GrayImage(int[][] frame) {
+		this.frame = new int[frame.length][frame[0].length];	
+		for (int i = 0; i < frame.length; i++) {
+			for (int j = 0; j < frame[i].length; j++) {
+				this.frame[i][j] = frame[i][j];
+			}
+		}
+
+		// we need to do deep copy so the frame is deep copyied
+	}
+
+	public static int neighborsAvrage(int[][] framepicture, int x, int y, int n) {
 
 		int counter = 0;
 		int sum = 0;
-		int numberOfNeighbersToCount = (n - 1) / 2;
-		for (int i = x - numberOfNeighbersToCount; i <= x + numberOfNeighbersToCount; i++) {
-			for (int j = y - numberOfNeighbersToCount; j <= y + numberOfNeighbersToCount; j++) {
+		int couner2 = (n - 1) / 2;
+		for (int i = x - couner2; i <= x + couner2; i++) {
+			for (int j = y - couner2; j <= y + couner2; j++) {
 				if (i < 0 || j < 0) {
 					continue;
 				}
-				if (i >= pic.length || j >= pic[0].length) {
+				if (i >= framepicture.length || j >= framepicture[0].length) {
 					continue;
 				} else {
 					counter++;
-					sum = sum + pic[i][j];
+					sum = sum + framepicture[i][j];
 				}
 			}
 		}
@@ -89,13 +96,7 @@ public class GrayImage implements Frame, Comparable<Frame> {
 		return avg;
 	}
 
-	public int[] getPixel(int x, int y) {
-		int pixel = 0;
-		pixel = this.frame[x][y];
-		int[] pixelArray = new int[1];
-		pixelArray[0] = pixel;
-		return pixelArray;
-	};
+
 
 	public boolean isInside(int test[][], int x, int y) {
 
