@@ -110,31 +110,26 @@ public class FrameContainer implements ContainerFunctions {
             // By the lesson we learned about sorting functions,
             // I used what we learned in the lesson to compare the sizes
 
-            boolean issorted = true;
-            for (int j = 0; j < this.framearr.length && issorted; j++) {
-                issorted = false;
-                for (int i = 0; i < this.framearr.length - 1 && this.framearr[i + 1] != null; i++) {
-                    
-                    if (this.framearr[i] instanceof RGBImage) {
-                        if (((RGBImage) this.framearr[i]).compareTo(this.framearr[i + 1]) == -1) {
-                            Frame temp = this.framearr[i];
-                            this.framearr[i] = this.framearr[i + 1];
-                            this.framearr[i + 1] = temp;
-                            issorted = true;
-                        }
-                    }
-                    if (this.framearr[i] instanceof GrayImage) {
-                        if (((GrayImage) this.framearr[i]).compareTo(this.framearr[i + 1]) == -1) {
-                            Frame temp = this.framearr[i];
-                            this.framearr[i] = this.framearr[i + 1];
-                            this.framearr[i + 1] = temp;
-                            issorted = true;
-                        }
-                    }
+            for (int i = 1; i<this.mySize ; i++) {
+                for (int j = 0; j<this.mySize-1; j++) {    
+                    int ans = 0;
+                    if (this.framearr[j] instanceof GrayImage)     
+                         ans = ((GrayImage)this.framearr[j]).compareTo(this.framearr[j+1]);    
+                    else ans = ((RGBImage)this.framearr[j]).compareTo(this.framearr[j+1]);
     
-                }
+                    if (ans == 1) {
+                        Frame Temp;
+                        if (this.framearr[j] instanceof GrayImage) {
+                            Temp = new GrayImage((GrayImage)this.framearr[j]);            
+                        }
+                        else Temp = new RGBImage((RGBImage)this.framearr[j]);        
     
+                        this.framearr[j] = this.framearr[j+1];
+                        this.framearr[j+1] = Temp;
+                    }
+                }    
             }
+
         }
     
 

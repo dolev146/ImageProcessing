@@ -5,103 +5,23 @@ public class FrameContainerTest {
     @Test
     void FirstTest() {
 
-        
-//          // sort !!!
-//          int[][] arr = {
-            
-//             { 1, 1, 1, 1 },
-//              { 1, 1, 1, 1 },
-//               { 1, 1, 1, 1 },
-//                { 1, 1, 1, 1 }, 
-    
-//         };
-//     Frame Gray = new GrayImage(arr);
+		  int[][] FirstArray = {
+               { 2, 2, 2, 2 },
+                { 9, 9, 9, 9 },
+                 { 5, 5, 5, 5 },
+                  { 5, 5, 5, 5 }, };
+		  Frame firstGray = new GrayImage(FirstArray);
 
-//     int[][] arr2 = {
-//          { 1, 1, 1, 1 },
-//          { 1, 1, 1, 1 },
-//          { 1, 1, 1, 1 } ,     
-//         };
-//     Frame Gray2 = new GrayImage(arr2);
-
-//     int[][] arr3 = { 
-//         { 1, 1, 1, 1 },
-//         { 1, 1, 1, 1 },       
-//  };
-//     Frame Gray3 = new GrayImage(arr3);
-
-//     int[][] arr5 = { 
-//         { 1 },
-//         { 1 },
-//         { 1 },
-//         { 1 },         
-//     };
-//     Frame Gray5 = new GrayImage(arr5);
-
-//     Frame[] ArrayOfFrame = { Gray2, Gray, Gray5, Gray3 };
-
-//     FrameContainer frameContainer = new FrameContainer();
-//     for (int i = 0; i < ArrayOfFrame.length; i++) {
-//         frameContainer.add(ArrayOfFrame[i]);
-//     }
-//     frameContainer.sort();
-
-// //        int[][][] ArrayOfmatrix = new int[5][][];
-// //        for (int i = 0; i < ArrayOfFrame.length; i++) {
-// //            ArrayOfmatrix[i] = ((GrayImage) ArrayOfFrame[i]).getFrame();
-// //        }
-
-//     int arr9[][] = ((GrayImage) frameContainer.get(0)).getFrame(); 
-//     int[][][][] arr10 = { 
-//         // {{ { 1 }, { 1 } },
-//         // { { 1 }, { 1 } },
-//         // { { 1 }, { 1 } },},
-
-        
-// {{ { 1 }, { 1 }, { 1 }, { 1 }, },
-// { { 1 }, { 1 }, { 1 }, { 1 }, },
-// { { 1 }, { 1 }, { 1 }, { 1 }, },
-// },
-
-
-//         {{ { 1, 1, 1, 1 }, { 1, 1, 1, 1 }, },             
-//         { { 1, 1, 1, 1 }, { 1, 1, 1, 1 }, },             
-//         { { 1, 1, 1, 1 }, { 1, 1, 1, 1 }, },             },
-
-
-//             {{ { 1, 1, 1, 1 }, { 1, 1, 1, 1 }, { 1, 1, 1, 1 }, },
-//             { { 1, 1, 1, 1 }, { 1, 1, 1, 1 }, { 1, 1, 1, 1 }, },
-//             { { 1, 1, 1, 1 }, { 1, 1, 1, 1 }, { 1, 1, 1, 1 }, },},
-
-
-//             {{ { 1, 1, 1, 1 }, { 1, 1, 1, 1 }, { 1, 1, 1, 1 }, { 1, 1, 1, 1 }, },
-//             { { 1, 1, 1, 1 }, { 1, 1, 1, 1 }, { 1, 1, 1, 1 }, { 1, 1, 1, 1 }, },
-//             { { 1, 1, 1, 1 }, { 1, 1, 1, 1 }, { 1, 1, 1, 1 }, { 1, 1, 1, 1 }, },}
-             
-
-//     };
-    
-
-
-
-    
-		  // sort !!!
-		  int[][] arr9 = { { 1, 1, 1, 1 }, { 1, 1, 1, 1 }, { 1, 1, 1, 1 }, { 1, 1, 1, 1 }, };
-		  Frame gray9 = new GrayImage(arr9);
+		  int[][] thirdArray = { { 5, 5, 5, 5 }, { 5, 5, 5, 5 }, };
+		  Frame thirdGray = new GrayImage(thirdArray);
   
-		  int[][] arr2 = { { 1, 1, 1, 1 }, { 1, 1, 1, 1 }, { 1, 1, 1, 1 } };
-		  Frame gray2 = new GrayImage(arr2);
+		  int[][] fithArray = { { 5 }, { 5 }, { 5 }, { 5 }, };
+		  Frame fithgray = new GrayImage(fithArray);
   
-		  int[][] arr3 = { { 1, 1, 1, 1 }, { 1, 1, 1, 1 }, };
-		  Frame gray3 = new GrayImage(arr3);
+		  int[][] forthArray = { { 5 }, { 5 } };
+		  Frame forthGray = new GrayImage(forthArray);
   
-		  int[][] arr5 = { { 1 }, { 1 }, { 1 }, { 1 }, };
-		  Frame gray5 = new GrayImage(arr5);
-  
-		  int[][] arr4 = { { 1 }, { 1 } };
-		  Frame gray4 = new GrayImage(arr4);
-  
-		  Frame[] ArrayOfFrame = {  gray9, gray5, gray3, gray4 };
+		  Frame[] ArrayOfFrame = {  firstGray, fithgray, thirdGray, forthGray };
   
 		  FrameContainer frameContainer = new FrameContainer();
 		  for (int i = 0; i < ArrayOfFrame.length; i++) {
@@ -109,112 +29,71 @@ public class FrameContainerTest {
 		  }
 
 		  frameContainer.sort();
-  
-		//   int[][] ArrayOfmatrix = new int[6][];
-		//   for (int i = 0; i < ArrayOfFrame.length; i++) {
-		// 	  ArrayOfmatrix[i] = ((GrayImage) frameContainer.get(i)).getFrame();
-		//   }
+           
+           int[][] TheFirst = ((GrayImage)  frameContainer.get(0)).getFrame();
 
-            
-           int[][] arr10 = ((GrayImage)  frameContainer.get(0)).getFrame();
-
-           Assertions.assertArrayEquals(arr4, arr10);
+           Assertions.assertArrayEquals(forthArray, TheFirst);
 
 
     }
 
     @Test
     void secondTest() {
-        int[][] arr = { { 1, 2, 3, 4 }, { 1, 2, 3, 4 }, { 1, 2, 3, 4 }, { 1, 2, 3, 4 }, };
-        Frame gray = new GrayImage(arr);
+        int[][] FirstArray = { { 5, 9, 3, 4 }, { 5, 9, 3, 4 }, { 5, 9, 3, 4 }, { 5, 9, 3, 4 }, };
+        Frame gray = new GrayImage(FirstArray);
 
-        int[][] arr2 = { { 1, 2, 3, 4 }, { 1, 2, 3, 4 }, { 1, 2, 3, 4 }, };
-        Frame gray2 = new GrayImage(arr2);
+        int[][] secondArray = { { 5, 9, 3, 4 }, { 5, 9, 3, 4 }, { 5, 9, 3, 4 }, };
+        Frame secondGray = new GrayImage(secondArray);
 
-        int[][] arr3 = { { 1, 2, 3, 4 }, { 1, 2, 3, 4 }, };
-        Frame gray3 = new GrayImage(arr3);
+        int[][] thirdArray = { { 5, 9, 3, 4 }, { 5, 9, 3, 4 }, };
+        Frame thirdGray = new GrayImage(thirdArray);
 
-        int[][] arr4 = { { 1, 2 }, { 1, 2 }, { 1, 2 }, { 1, 2 }, };
+        int[][] forthArray = { { 5, 9 }, { 5, 9 }, { 5, 9 }, { 5, 9 }, };
 
-        Frame gray4 = new GrayImage(arr4);
+        Frame forthGray = new GrayImage(forthArray);
 
-        int[][] arr5 = { { 1 }, { 1 }, { 1 }, { 1 }, };
-        Frame gray5 = new GrayImage(arr5);
+        int[][] fithArray = { { 5 }, { 5 }, { 5 }, { 5 }, };
+        Frame FifthGray = new GrayImage(fithArray);
 
-        Frame[] ArrayOfFrame = { gray, gray2, gray3, gray4, gray5, };
+        Frame[] ArrayOfFrame = { gray, secondGray, thirdGray, forthGray, FifthGray, };
 
         FrameContainer frameContainer = new FrameContainer();
         for (int i = 0; i < ArrayOfFrame.length; i++) {
             frameContainer.add(ArrayOfFrame[i]);
         }
 
-        frameContainer.remove(gray3);
-
+        frameContainer.remove(thirdGray);
+        // we want to test every array
         Assertions.assertEquals(gray, frameContainer.get(0));
-        Assertions.assertEquals(gray2, frameContainer.get(1));
-        Assertions.assertEquals(gray4, frameContainer.get(2));
-        Assertions.assertEquals(gray5, frameContainer.get(3));
+        // so we check every array
+        Assertions.assertEquals(secondGray, frameContainer.get(1));
+        // every array
+        Assertions.assertEquals(forthGray, frameContainer.get(2));
+        Assertions.assertEquals(FifthGray, frameContainer.get(3));
 
-        // int[][][] ArrayOfmatrix = new int[3][][];
-        // for(int i = 0 ; i < frameContainer.FrameArray.length ; i++){
-        // ArrayOfmatrix[i] = ((GrayImage) frameContainer.FrameArray[i]).getFrame();
-        // }
-
-        // {
-        // ((GrayImage) gray).getFrame() ,
-        // ((GrayImage) gray2).getFrame() ,
-        // ((GrayImage) gray3).getFrame() ,
-        // ((GrayImage) gray4).getFrame() ,
-        // ((GrayImage) gray5).getFrame() ,
-        // };
-
-        // int[][][] arr10 = {
-        // {{1,1,1,1},
-        // {2,2,2,2},
-        // {3,3,3,3},
-        // {4,4,4,4},} ,
-
-        // {{1,1,1},
-        // {2,2,2},
-        // {3,3,3},
-        // {4,4,4},} ,
-
-        // {{1,1},
-        // {2,2},
-        // {3,3},
-        // {4,4},} ,
-
-        // { {1,1,1,1},
-        // {2,2,2,2}},
-
-        // { {1,1,1,1}}
-
-        // };
-
-        // Assertions.assertArrayEquals(arr10, ArrayOfmatrix);
-
+    
     }
 
     @Test
     void thirdTest() {
         // 
-        int[][] arr = { { 1, 2, 3, 4 }, { 1, 2, 3, 4 }, { 1, 2, 3, 4 }, { 1, 2, 3, 4 }, };
+        int[][] arr = { { 9, 2, 3, 4 }, { 9, 2, 3, 4 }, { 9, 2, 3, 4 }, { 9, 2, 3, 4 }, };
         Frame gray = new GrayImage(arr);
 
-        int[][] arr2 = { { 1, 2, 3, 4 }, { 1, 2, 3, 4 }, { 1, 2, 3, 4 }, };
-        Frame gray2 = new GrayImage(arr2);
+        int[][] secondArray = { { 9, 2, 3, 4 }, { 9, 2, 3, 4 }, { 9, 2, 3, 4 }, };
+        Frame secondGray = new GrayImage(secondArray);
 
-        int[][] arr3 = { { 1, 2, 3, 4 }, { 1, 2, 3, 4 }, };
-        Frame gray3 = new GrayImage(arr3);
+        int[][] thirdArray = { { 9, 2, 3, 4 }, { 9, 2, 3, 4 }, };
+        Frame thirdGray = new GrayImage(thirdArray);
 
-        int[][] arr4 = { { 1, 2 }, { 1, 2 }, { 1, 2 }, { 1, 2 }, };
+        int[][] forthArray = { { 9, 2 }, { 9, 2 }, { 9, 2 }, { 9, 2 }, };
 
-        Frame gray4 = new GrayImage(arr4);
+        Frame forthGray = new GrayImage(forthArray);
 
-        int[][] arr5 = { { 1 }, { 1 }, { 1 }, { 1 }, };
-        Frame gray5 = new GrayImage(arr5);
+        int[][] fithArray = { { 9 }, { 9 }, { 9 }, { 9 }, };
+        Frame FifthGray = new GrayImage(fithArray);
 
-        Frame[] ArrayOfFrame = { gray, gray2, gray3, gray4, gray5, };
+        Frame[] ArrayOfFrame = { gray, secondGray, thirdGray, forthGray, FifthGray, };
 
         FrameContainer frameContainer = new FrameContainer();
         for (int i = 0; i < ArrayOfFrame.length; i++) {
@@ -225,15 +104,17 @@ public class FrameContainerTest {
         int[][][] ArrayOfmatrix = { ((GrayImage) frameContainer.get(0)).getFrame(), ((GrayImage) frameContainer.get(1)).getFrame(),
                 ((GrayImage) frameContainer.get(2)).getFrame(), ((GrayImage) frameContainer.get(3)).getFrame(), ((GrayImage) frameContainer.get(4)).getFrame(), };
 
-        int[][][] arr10 = { { { 1, 1, 1, 1 }, { 2, 2, 2, 2 }, { 3, 3, 3, 3 }, { 4, 4, 4, 4 }, },
+        int[][][] arr10 = { { 
+            { 9, 9, 9, 9 }, { 2, 2, 2, 2 }, { 3, 3, 3, 3 }, { 4, 4, 4, 4 }, 
+        },
 
-                { { 1, 1, 1 }, { 2, 2, 2 }, { 3, 3, 3 }, { 4, 4, 4 }, },
+                { {9,9,9 }, { 2, 2, 2 }, { 3, 3, 3 }, { 4, 4, 4 }, },
 
-                { { 1, 1 }, { 2, 2 }, { 3, 3 }, { 4, 4 }, },
+                { { 9, 9 }, { 2, 2 }, { 3, 3 }, { 4, 4 }, },
 
-                { { 1, 1, 1, 1 }, { 2, 2, 2, 2 } },
+                { { 9, 9, 9, 9 }, { 2, 2, 2, 2 } },
 
-                { { 1, 1, 1, 1 } }
+                { { 9, 9, 9, 9 } }
 
         };
 
@@ -243,42 +124,41 @@ public class FrameContainerTest {
 
     @Test
     void ForthTest() {
-        //TODO add 
 
-        int[][] arr = { 
+        int[][] FirstArr = { 
             { 1, 2, 3,  },
              { 1, 2, 3,  },
               { 1, 2, 3, },
              };
-        Frame gray = new GrayImage(arr);
+        Frame FirstGray = new GrayImage(FirstArr);
 
-        int[][] arr2 = { 
+        int[][] secondArray = { 
             { 1, 2, 3, 4 },
              { 1, 2, 3, 4 },
               { 1, 2, 3, 4 }, };
-        Frame gray2 = new GrayImage(arr2);
+        Frame secondGray = new GrayImage(secondArray);
 
-        int[][] arr3 = { { 1, 2, 3, 4 }, { 1, 2, 3, 4 }, };
-        Frame gray3 = new GrayImage(arr3);
+        int[][] thirdArray = { { 1, 2, 3, 4 }, { 1, 2, 3, 4 }, };
+        Frame thirdGray = new GrayImage(thirdArray);
 
-        int[][] arr4 = { { 1, 2 }, { 1, 2 }, { 1, 2 }, { 1, 2 }, };
+        int[][] forthArray = { { 1, 2 }, { 1, 2 }, { 1, 2 }, { 1, 2 }, };
 
-        Frame gray4 = new GrayImage(arr4);
+        Frame forthGray = new GrayImage(forthArray);
 
-        int[][] arr5 = { { 1 }, { 1 }, { 1 }, { 1 }, };
-        Frame gray5 = new GrayImage(arr5);
+        int[][] fithArray = { { 1 }, { 1 }, { 1 }, { 1 }, };
+        Frame FifthGray = new GrayImage(fithArray);
 
-        Frame[] ArrayOfFrame = { gray, gray2, gray3, gray4, gray5, };
+        Frame[] ArrayOfFrame = { FirstGray, secondGray, thirdGray, forthGray, FifthGray, };
 
         FrameContainer frameContainer = new FrameContainer();
         for (int i = 0; i < ArrayOfFrame.length; i++) {
             frameContainer.add(ArrayOfFrame[i]);    
         }
         frameContainer.smoothAll(3);
-        int[][][] ArrayOfmatrix = { ((GrayImage) gray).getFrame(), ((GrayImage) gray2).getFrame(),
-                ((GrayImage) gray3).getFrame(), ((GrayImage) gray4).getFrame(), ((GrayImage) gray5).getFrame(), };
+        int[][][] ArrayOfmatrix = { ((GrayImage) FirstGray).getFrame(), ((GrayImage) secondGray).getFrame(),
+                ((GrayImage) thirdGray).getFrame(), ((GrayImage) forthGray).getFrame(), ((GrayImage) FifthGray).getFrame(), };
 
-        int[][][] arr10 = {     
+        int[][][] Last = {     
             {
                   { 1, 2, 2  },
                   { 1, 2, 2 },
@@ -315,7 +195,7 @@ public class FrameContainerTest {
 
        
 
-        Assertions.assertArrayEquals(arr10, ArrayOfmatrix);
+        Assertions.assertArrayEquals(Last, ArrayOfmatrix);
 
     }
 

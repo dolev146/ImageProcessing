@@ -2,9 +2,6 @@
 public class GrayImage implements Frame, Comparable<Frame> {
 
 	private int[][] frame;
-
-	
-
 	
 	public void rotate90() {
 		int[][] r = new int[this.frame[0].length][this.frame.length];
@@ -17,11 +14,12 @@ public class GrayImage implements Frame, Comparable<Frame> {
 		this.frame = r;
 	};
 
-	public GrayImage(GrayImage gI) {
-		this.frame = new int[gI.frame.length][gI.frame[0].length];
+	public GrayImage(GrayImage other) {
+		// we have to do here deep copy so that the frame is not pointing to the same frame array objet
+		this.frame = new int[other.frame.length][other.frame[0].length];
 		for (int i = 0; i < frame.length; i++) {
 			for (int j = 0; j < frame[i].length; j++) {
-				this.frame[i][j] = gI.frame[i][j];
+				this.frame[i][j] = other.frame[i][j];
 			}
 		}
 	}
@@ -114,70 +112,36 @@ public class GrayImage implements Frame, Comparable<Frame> {
 		}
 
 
-		int[][] croppedMatrix = new int[x+1][y+1];
+		int[][] cropycrop = new int[x+1][y+1];
 		for (int i = 0; i <= x; i++) {
 			for (int j = 0; j <= y; j++) {
 				if(isInside(this.frame, i,j)) {
-					croppedMatrix[i][j] = this.frame[i][j];
+					cropycrop[i][j] = this.frame[i][j];
 				}
 			}
 		}
-		this.frame = croppedMatrix;
+		this.frame = cropycrop;
 	};
 
 	public void addFrom(Frame f) {
-		// first try
-		/********************************* */
 
-		// checking if the image is Gray of RGBA Color By The length of a pixel that
-		// return
-		// int[] pixelArray = f.getPixel(0, 0);
-		// if (pixelArray.length != 3) {
-		// return;
-		// }
-
-		// Loading array of the object that calling the method
-		// MyImageIO.writeImageToFile(f, "catE.jpg");
-		// int arr[][][] = MyImageIO.readImageFromFile("catE.jpg");
-
-		// Now what we are doing is adding one Pixel at a time to the Cell of the matrix
-		// // frame
-		// if (arr[0].length == this.frame.length && arr[0][0].length ==
-		// this.frame[0].length) {
-		// for (int x = 0; x < this.frame.length; x++) {
-		// for (int y = 0; y < this.frame[0].length; y++) {
-		// pixelArray = f.getPixel(x, y);
-		// this.frame[x][y] = this.frame[x][y] + pixelArray[0];
-		// }
-
-		// }
-
-		// }
-
-		/***************************************** */
-		// second try
-
-		int ArrayOfFrame[][];
-		int pixelArray[] = new int[3];
-		// video about casting and insance of
-		// https://www.w3schools.com/java/ref_keyword_instanceof.asp
-		// https://www.w3schools.com/java/java_type_casting.asp
-		// https://www.youtube.com/watch?v=H0LNjF9PSeM
+		int arr[][];
+		int pixel[] = new int[3];
 
 		if (f instanceof GrayImage) {
-			ArrayOfFrame = ((GrayImage) f).getFrame();
+			arr = ((GrayImage) f).getFrame();
 		} else {
 			return;
 		}
 
-		if (ArrayOfFrame.length == this.frame.length && ArrayOfFrame[0].length == this.frame[0].length) {
+		if (arr.length == this.frame.length && arr[0].length == this.frame[0].length) {
 			for (int x = 0; x < this.frame.length; x++) {
 				for (int y = 0; y < this.frame[0].length; y++) {
-					pixelArray = f.getPixel(x, y);
-					if ((this.frame[x][y] + pixelArray[0]) > 255 * 255) {
+					pixel = f.getPixel(x, y);
+					if ((this.frame[x][y] + pixel[0]) > 255 * 255) {
 						this.frame[x][y] = 255 * 255;
 					} else {
-						this.frame[x][y] = this.frame[x][y] + pixelArray[0];
+						this.frame[x][y] = this.frame[x][y] + pixel[0];
 					}
 				}
 			}
@@ -192,34 +156,39 @@ public class GrayImage implements Frame, Comparable<Frame> {
 		}
 
 		if (f instanceof RGBImage) {
-			int arr[][][];
+			int arrayofpixel[][][];
 			
-			arr = ((RGBImage)f).getFrame();
+			arrayofpixel = ((RGBImage)f).getFrame();
+			// we have to check the size
+			// we have to check the size
+			// we have to check the size
 			
-			int my_size = this.frame.length * this.frame[0].length;
-			int other = arr[0].length * arr[0][0].length;
+			int size= this.frame.length * this.frame[0].length;
+			int other = arrayofpixel[0].length * arrayofpixel[0][0].length;
 			
-			if (my_size > other)
+			if (size> other)
 				return 1;
 			
-			if (my_size < other)
+			if (size< other)
 				return -1;
 			
 			return 0;
 		}
 		
 		else {
-			int arr[][];
+			int arrayofpixel[][];
 			
-			arr = ((GrayImage)f).getFrame();
+			arrayofpixel = ((GrayImage)f).getFrame();
 			
-			int my_size = this.frame.length * this.frame[0].length;
-			int other = arr.length * arr[0].length;
+			int size= this.frame.length * this.frame[0].length;
+
+			// we have to check the size
+			int other = arrayofpixel.length * arrayofpixel[0].length;
 			
-			if (my_size > other)
+			if (size> other)
 				return 1;
 			
-			if (my_size < other)
+			if (size< other)
 				return -1;
 			
 			return 0;

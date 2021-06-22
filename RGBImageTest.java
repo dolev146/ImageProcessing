@@ -33,7 +33,7 @@ public class RGBImageTest {
 
 
 
-        
+
         color.rotate90();
         int[][][] Frame = ((RGBImage) color).getFrame();
 
@@ -88,14 +88,14 @@ public class RGBImageTest {
         color.smooth(3);
         int[][][] ArrayOfFrame = ((RGBImage) color).getFrame();
 
-        int[][][] arr2 = { 
+        int[][][] secondArr = { 
             {{ 3, 3, 4 }, { 4, 5, 5 }, { 6, 6, 7 }},
             {{ 3, 3, 4 }, { 4, 5, 5 }, { 6, 6, 7 }},
             {{ 3, 3, 4 }, { 4, 5, 5 }, { 6, 6, 7 }},
          };
 
 
-        Assertions.assertArrayEquals(arr2, ArrayOfFrame);
+        Assertions.assertArrayEquals(secondArr, ArrayOfFrame);
     }
 
     @Test
@@ -111,13 +111,13 @@ public class RGBImageTest {
 
         int[][][] ArrayOfFrame = ((RGBImage) color).getFrame();
 
-        int[][][] arr2 = { 
+        int[][][] secondArr = { 
             {{ 1, 2 }, { 4, 5 }},
             {{ 1, 2 }, { 4, 5 }},
             {{ 1, 2 }, { 4, 5 }},
          };
 
-        Assertions.assertArrayEquals(arr2, ArrayOfFrame);
+        Assertions.assertArrayEquals(secondArr, ArrayOfFrame);
     }
 
     @Test
@@ -131,12 +131,12 @@ public class RGBImageTest {
 
         int[][][] ArrayOfFrame = ((RGBImage) color).getFrame();
 
-        int[][][] arr2 = { 
+        int[][][] secondArr = { 
             {{ 2, 4, 6 }, { 8, 10, 12 }, { 14, 16, 18 }},
             {{ 2, 4, 6 }, { 8, 10, 12 }, { 14, 16, 18 }},
             {{ 2, 4, 6 }, { 8, 10, 12 }, { 14, 16, 18 }},
          };
-        Assertions.assertArrayEquals(arr2, ArrayOfFrame);
+        Assertions.assertArrayEquals(secondArr, ArrayOfFrame);
     }
 
     @Test
@@ -153,9 +153,9 @@ public class RGBImageTest {
 
         int[] a = color.getPixel(1, 1);
 
-        int[] arr2 = { 5,5,5 };
+        int[] secondArr = { 5,5,5 };
 
-        Assertions.assertArrayEquals(arr2, a);
+        Assertions.assertArrayEquals(secondArr, a);
     }
 
     

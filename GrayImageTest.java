@@ -29,14 +29,14 @@ public class GrayImageTest {
 
     @Test
     void secondTest() {
-        int[][] arr = {
+        int[][] secondArray = {
              { 1, 2, 3 },
               { 4, 5, 6 },
                { 7, 8, 9 }
              };
-        Frame gray = new GrayImage(arr);
-        gray.smooth(3);
-        int[][] ArrayOfFrame = ((GrayImage) gray).getFrame();
+        Frame GrayFrame = new GrayImage(secondArray);
+        GrayFrame.smooth(3);
+        int[][] ArrayOfFrame = ((GrayImage) GrayFrame).getFrame();
 
         int[][] arr2 = {
              { 3, 3, 4 },
@@ -49,42 +49,42 @@ public class GrayImageTest {
 
     @Test
     void thirdTest() {
-        int[][] arr = { 
-            { 1, 2, 3 },
+        int[][] FirstArray = { 
+            { 5, 2, 3 },
              { 4, 5, 6 },
               { 7, 8, 9 }
              };
-        Frame gray = new GrayImage(arr);
-        gray.crop(1, 1);
+        Frame GrayFrame = new GrayImage(FirstArray);
+        GrayFrame.crop(1, 1);
 
-        int[][] ArrayOfFrame = ((GrayImage) gray).getFrame();
+        int[][] ArrayOfFrame = ((GrayImage) GrayFrame).getFrame();
 
-        int[][] arr2 = { { 1, 2 }, { 4, 5 } };
+        int[][] arr2 = { { 5, 2 }, { 4, 5 } };
 
         Assertions.assertArrayEquals(arr2, ArrayOfFrame);
     }
 
     @Test
     void ForthTest() {
-        int[][] arr = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+        int[][] arr = { { 5, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
         Frame gray = new GrayImage(arr);
 
         gray.addFrom(gray);
 
         int[][] ArrayOfFrame = ((GrayImage) gray).getFrame();
 
-        int[][] arr2 = { { 2, 4, 6 }, { 8, 10, 12 }, { 14, 16, 18 } };
+        int[][] arr2 = { { 10, 4, 6 }, { 8, 10, 12 }, { 14, 16, 18 } };
         Assertions.assertArrayEquals(arr2, ArrayOfFrame);
     }
 
     @Test
     void fithTest() {
 
-        int[][] arr = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+        int[][] arr = { { 5, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
 
-        Frame gray = new GrayImage(arr);
+        Frame GrayFrame = new GrayImage(arr);
 
-        int[] a = gray.getPixel(1, 1);
+        int[] a = GrayFrame.getPixel(1, 1);
 
         int[] arr2 = { 5 };
 
