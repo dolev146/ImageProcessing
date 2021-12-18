@@ -1,5 +1,5 @@
 # Image-Processing
-## Computer Science task ;
+## Computer Science java task ;
 
 ![alt text](catE.jpg "catty")
 
